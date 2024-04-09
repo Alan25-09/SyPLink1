@@ -14,9 +14,10 @@ import 'package:jobhubv2_0/views/screens/mainscreen.dart';
 import 'package:jobhubv2_0/views/screens/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 
-Widget defaultHome = const OnboardingScreen();
+Widget defaultHome =
+    const OnboardingScreen(); // ** Comentario de prueba para la branch main A.F
 
-///TODO: Hook the app to firebase using firebase cli
+///TODO: Hook the app to firebase using firebase click
 void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => OnBoardNotifier()),
