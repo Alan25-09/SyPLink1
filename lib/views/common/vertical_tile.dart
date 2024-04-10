@@ -18,12 +18,11 @@ class VerticalTile extends StatelessWidget {
         onTap: onTap,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-          height: hieght * 0.15,
+          height: height * 0.15,
           width: width,
           decoration: BoxDecoration(
-            color: Color(kLightGrey.value),
-            borderRadius: const BorderRadius.all(Radius.circular(9))
-          ),
+              color: Color(kLightGrey.value),
+              borderRadius: const BorderRadius.all(Radius.circular(9))),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,8 +35,7 @@ class VerticalTile extends StatelessWidget {
                       CircleAvatar(
                         backgroundColor: Color(kLightGrey.value),
                         radius: 25,
-                        backgroundImage:
-                             NetworkImage(job!.imageUrl),
+                        backgroundImage: NetworkImage(job!.imageUrl),
                       ),
                       const WidthSpacer(width: 25),
                       Column(
