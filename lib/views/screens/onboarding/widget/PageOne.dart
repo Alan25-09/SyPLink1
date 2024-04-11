@@ -2,30 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/views/common/exports.dart';
 
-/* Clase donde se construye la página uno de la aplicación */
+/* Clase donde se construye la página uno de la introducción */
 class PageOne extends StatelessWidget {
   const PageOne({super.key});
 
+/* Método donde se construye la estructura de la página */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: Center(
+      // Fondo de la página
+      child: Container(
         width: width,
         height: height,
-        color: Color(kAmarUpi.value),
+        color: Color(kAmarillo.value),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Espacio vertical
             const SizedBox(
               height: 70,
             ),
+            // Imagen que se va a utilizar
             Image.asset("assets/images/prueba1.png"),
+            // Espacio vertical
             const SizedBox(
-              height: 40,
+              height: 30,
             ),
+            // Columna donde se organiza el texto
             Column(
               children: [
-                Text('Encuentra vacantes\ndentro de tu institución',
+                Text('Encuentra oportunidades\ndentro de tu institución',
                     textAlign: TextAlign.center,
                     style: appStyle(20, Color(kDark.value), FontWeight.w500)),
                 const SizedBox(
@@ -44,6 +50,6 @@ class PageOne extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
