@@ -21,7 +21,7 @@ class PageTwo extends StatelessWidget {
           children: [
             // Espacio vertical
             const SizedBox(
-              height: 65,
+              height: 50,
             ),
             // Imagen que se va a utilizar
             Padding(
@@ -39,6 +39,7 @@ class PageTwo extends StatelessWidget {
                     'Pon en práctica tus habilidades\nen el área de tu interés',
                     textAlign: TextAlign.center,
                     style: appStyle(20, Color(kDark.value), FontWeight.w500)),
+                // Espacio vertical
                 const SizedBox(
                   height: 30,
                 ),

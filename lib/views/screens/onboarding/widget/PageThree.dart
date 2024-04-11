@@ -49,7 +49,7 @@ class PageThree extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            // Botón que dirige a la página de inicio
+            // Botón personalizado que dirige a la página de inicio
             CustomOutlineBtn(
                 // Al hacer click, ejecutar acción de ir a la página de inicio
                 onTap: () {
