@@ -20,7 +20,7 @@ class PageOne extends StatelessWidget {
           children: [
             // Espacio vertical
             const SizedBox(
-              height: 70,
+              height: 30,
             ),
             // Imagen que se va a utilizar
             Image.asset("assets/images/prueba1.png"),
@@ -34,6 +34,7 @@ class PageOne extends StatelessWidget {
                 Text('Encuentra oportunidades\ndentro de tu institución',
                     textAlign: TextAlign.center,
                     style: appStyle(20, Color(kDark.value), FontWeight.w500)),
+                // Espacio vertical
                 const SizedBox(
                   height: 30,
                 ),
