@@ -31,9 +31,9 @@ class SearchWidget extends StatelessWidget {
                       width: 30,
                       height: 30,
                       decoration: BoxDecoration(
-                      color: Color(kOrange.value),
-                      borderRadius: const BorderRadius.all(Radius.circular(9))
-                      ),
+                          color: Color(kVerde.value),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(9))),
                       child: Icon(
                         Feather.search,
                         color: Color(kLight.value),
@@ -42,9 +42,9 @@ class SearchWidget extends StatelessWidget {
                     ),
                     const WidthSpacer(width: 20),
                     ReusableText(
-                        text: "Search For Jobs",
-                        style:
-                            appStyle(16, Color(kDarkGrey.value), FontWeight.w400))
+                        text: "Búsqueda de vacantes",
+                        style: appStyle(
+                            16, Color(kDarkGrey.value), FontWeight.w400))
                   ],
                 ),
               ),

@@ -1,7 +1,7 @@
-#Sun Apr 14 21:56:15 CST 2024
-base.0=D\:\\Documentos\\SyPLink 1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-base.1=D\:\\Documentos\\SyPLink 1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
-base.2=D\:\\Documentos\\SyPLink 1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+#Mon Apr 15 15:28:26 CST 2024
+base.0=C\:\\Users\\Angela\\Documents\\Flutter Projects\\SyPLink1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+base.1=C\:\\Users\\Angela\\Documents\\Flutter Projects\\SyPLink1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+base.2=C\:\\Users\\Angela\\Documents\\Flutter Projects\\SyPLink1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.0=classes.dex
 path.1=classes2.dex
 path.2=classes3.dex
