@@ -1,1 +1,0 @@
- D:\\Documentos\\Flutter\ App\ admin\ y\ tit\\jobhubv2\\.dart_tool\\flutter_build\\635b48f67a2d20ef13281f898f318967\\native_assets.yaml: 
