@@ -1,10 +1,10 @@
 class Config {
-  static const apiUrl = "";
+  static const apiUrl = "jobhubv2-production-7104.up.railway.app";
   static const String loginUrl = "/api/login";
   static const String signupUrl = "/api/register";
-  static const String jobs = "/api/jobs";
-  static const String search = "/api/jobs/search";
-  static const String job = "/api/jobs";
+  static const String vacants = "/api/vacants";
+  static const String search = "/api/vacants/search";
+  static const String vacant = "/api/vacants";
   static const String profileUrl = "/api/users";
   static const String getprofileUrl = "/api/users";
   static const String bookmarkUrl = "/api/bookmarks";
