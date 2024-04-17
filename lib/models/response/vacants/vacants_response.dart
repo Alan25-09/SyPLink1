@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+// Comentario para commit
+
 List<VacantsResponse> vacantsResponseFromJson(String str) =>
     List<VacantsResponse>.from(
         json.decode(str).map((x) => VacantsResponse.fromJson(x)));
