@@ -8,4 +8,11 @@ import 'package:jobhubv2_0/models/response/vacants/vacants_response.dart';
 import 'package:jobhubv2_0/services/helpers/book_helper.dart';
 import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
 
-class JobsNotifier extends ChangeNotifier {}
+class JobsNotifier extends ChangeNotifier {
+  late Future<List<VacantsResponse>> vacantsList;
+
+  Future<List<VacantsResponse>> getVacants() {
+    vacantsList = JobsHelper.getVacants();
+    return vacantsList;
+  }
+}

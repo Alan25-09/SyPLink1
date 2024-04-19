@@ -9,6 +9,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:jobhubv2_0/views/common/heading_widget.dart';
 import 'package:jobhubv2_0/views/common/search.dart';
 import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
+import 'package:jobhubv2_0/views/screens/vacants/widgets/popularVacants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -71,6 +72,10 @@ class _HomePageState extends State<HomePage> {
                     height: 30.h,
                   ),
                   const HeadingWidget(text: 'Vacantes populares'),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  const PopularVacant(),
                   SizedBox(
                     height: 15.h,
                   ),
