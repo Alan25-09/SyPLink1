@@ -17,7 +17,7 @@ class GetVacantRes {
     required this.schedule,
     required this.status,
     required this.imageUrl,
-    required this.updatedAt,
+    //required this.updatedAt,
   });
 
   final String id;
@@ -30,7 +30,7 @@ class GetVacantRes {
   final String schedule;
   final bool status;
   final String imageUrl;
-  final DateTime updatedAt;
+  //final DateTime updatedAt;
 
   factory GetVacantRes.fromJson(Map<String, dynamic> json) => GetVacantRes(
         id: json["_id"],
@@ -43,7 +43,7 @@ class GetVacantRes {
         schedule: json["schedule"],
         status: json["status"],
         imageUrl: json["imageUrl"],
-        updatedAt: DateTime.parse(json["updatedAt"]),
+        //updatedAt: DateTime.parse(json["updatedAt"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,6 +57,6 @@ class GetVacantRes {
         "schedule": schedule,
         "status": status,
         "imageUrl": imageUrl,
-        "updatedAt": updatedAt.toIso8601String(),
+        //"updatedAt": updatedAt.toIso8601String(),
       };
 }
