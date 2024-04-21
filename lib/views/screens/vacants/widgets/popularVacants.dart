@@ -29,15 +29,15 @@ class PopularVacant extends StatelessWidget {
                 } else if (snapshot.data!.isEmpty) {
                   return const Text("Vacantes no encontradas");
                 } else {
-                  final vacn = snapshot.data;
+                  final vacants = snapshot.data;
 
                   return ListView.builder(
-                      itemCount: vacn!.length,
+                      itemCount: vacants!.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        var vac = vacn[index];
+                        var vacant = vacants[index];
                         return VacantHorizontalTile(
-                          vacn: vac,
+                          vacant: vacant,
                           onTap: () {},
                         );
                       });
