@@ -10,15 +10,21 @@ import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
 
 class VacantsNotifier extends ChangeNotifier {
   late Future<List<VacantsResponse>> vacantsList;
+  late Future<List<VacantsResponse>> recentVacants;
   late Future<GetVacantRes> vacant;
 
   Future<List<VacantsResponse>> getVacants() {
-    vacantsList = JobsHelper.getVacants();
+    vacantsList = VacantsHelper.getVacants();
     return vacantsList;
   }
 
+  Future<List<VacantsResponse>> getRecent() {
+    recentVacants = VacantsHelper.getVacants();
+    return recentVacants;
+  }
+
   Future<GetVacantRes> getVacant(String vacantId) {
-    vacant = JobsHelper.getVacant(vacantId);
+    vacant = VacantsHelper.getVacant(vacantId);
     return vacant;
   }
 }

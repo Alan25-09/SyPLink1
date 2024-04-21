@@ -7,6 +7,8 @@ import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/custom_outline_btn.dart';
+import 'package:jobhubv2_0/views/common/exports.dart';
+import 'package:jobhubv2_0/views/common/height_spacer.dart';
 import 'package:jobhubv2_0/views/common/pages_loader.dart';
 import 'package:jobhubv2_0/views/common/styled_container.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +62,95 @@ class _VacantDetailsState extends State<VacantDetails> {
                       child: Stack(
                         children: [
                           ListView(
-                            children: [],
+                            padding: EdgeInsets.zero,
+                            children: [
+                              Container(
+                                width: width,
+                                height: height * 0.27,
+                                decoration: BoxDecoration(
+                                    color: Color(kGris.value),
+                                    image: const DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/jobs.png'),
+                                        opacity: 0.35),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(9.w))),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30.w,
+                                      backgroundImage:
+                                          NetworkImage(vacant!.imageUrl),
+                                    ),
+                                    const HeightSpacer(size: 10),
+                                    ReusableText(
+                                        text: vacant.title,
+                                        style: appStyle(16, Color(kDark.value),
+                                            FontWeight.w600)),
+                                    const HeightSpacer(size: 5),
+                                    ReusableText(
+                                        text: vacant.area,
+                                        style: appStyle(16, Color(kDark.value),
+                                            FontWeight.w600)),
+                                    const HeightSpacer(size: 15),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 50.w),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          CustomOutlineBtn(
+                                              width: width * 0.40,
+                                              height: height * 0.04,
+                                              text: vacant.schedule,
+                                              color: Color(kDarkVerde.value)),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              const HeightSpacer(size: 20),
+                              ReusableText(
+                                  text: 'Descripción de la vacante',
+                                  style: appStyle(
+                                      16, Color(kDark.value), FontWeight.w600)),
+                              const HeightSpacer(size: 10),
+                              Text(
+                                vacant.description,
+                                textAlign: TextAlign.justify,
+                                style: appStyle(
+                                    13, Color(kDark.value), FontWeight.normal),
+                              ),
+                              const HeightSpacer(size: 20),
+                              ReusableText(
+                                  text: 'Requisitos',
+                                  style: appStyle(
+                                      16, Color(kDark.value), FontWeight.w600)),
+                              const HeightSpacer(size: 10),
+                              SizedBox(
+                                height: height * 0.6,
+                                child: ListView.builder(
+                                  itemCount: vacant.requirements.length,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    var requirement =
+                                        vacant.requirements[index];
+                                    String bullet = '\u2022';
+                                    return Padding(
+                                      padding: EdgeInsets.only(bottom: 12.w),
+                                      child: Text(
+                                        "$bullet $requirement",
+                                        style: appStyle(13, Color(kDark.value),
+                                            FontWeight.normal),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
                           ),
                           Align(
                             alignment: Alignment.bottomCenter,

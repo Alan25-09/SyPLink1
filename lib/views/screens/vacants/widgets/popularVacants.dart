@@ -10,8 +10,8 @@ import 'package:jobhubv2_0/views/screens/vacants/vacant_details_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/VacantsHorizontalTile.dart';
 import 'package:provider/provider.dart';
 
-class PopularVacant extends StatelessWidget {
-  const PopularVacant({super.key});
+class PopularVacants extends StatelessWidget {
+  const PopularVacants({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class PopularVacant extends StatelessWidget {
       builder: (context, vacantsNotifier, child) {
         vacantsNotifier.getVacants();
         return SizedBox(
-          height: height * 0.28,
+          height: height * 0.25,
           child: FutureBuilder<List<VacantsResponse>>(
               future: vacantsNotifier.vacantsList,
               builder: (context, snapshot) {

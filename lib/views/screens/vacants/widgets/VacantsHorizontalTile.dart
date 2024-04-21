@@ -68,8 +68,8 @@ class VacantHorizontalTile extends StatelessWidget {
                     const HeightSpacer(size: 5),
                     ReusableText(
                         text: vacant.responsibleName,
-                        style: appStyle(
-                            16, Color(kDarkGris.value), FontWeight.w600)),
+                        style:
+                            appStyle(16, Color(kDark.value), FontWeight.w600)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -78,7 +78,7 @@ class VacantHorizontalTile extends StatelessWidget {
                             ReusableText(
                                 text: vacant.schedule,
                                 style: appStyle(
-                                    20, Color(kDark.value), FontWeight.w600)),
+                                    16, Color(kDark.value), FontWeight.w600)),
                           ],
                         ),
                         CircleAvatar(
