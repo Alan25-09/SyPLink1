@@ -13,6 +13,7 @@ import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/vacant_list_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/RecentList.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/popularVacants.dart';
+import 'package:jobhubv2_0/views/search/search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -69,7 +70,9 @@ class _HomePageState extends State<HomePage> {
                     height: 20.h,
                   ),
                   SearchWidget(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const SearchPage());
+                    },
                   ),
                   SizedBox(
                     height: 30.h,
@@ -89,7 +92,12 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 15.h,
                   ),
-                  const HeadingWidget(text: 'Publicados recientemente'),
+                  HeadingWidget(
+                    text: 'Publicados recientemente',
+                    onTap: () {
+                      Get.to(() => const VacantListPage());
+                    },
+                  ),
                   SizedBox(
                     height: 15.h,
                   ),

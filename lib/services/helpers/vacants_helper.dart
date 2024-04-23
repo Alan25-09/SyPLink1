@@ -46,6 +46,22 @@ class VacantsHelper {
     };
 
     var url = Uri.https(Config.apiUrl, Config.vacants, {"new": "true"});
+    var response = await client.get(url, headers: requestHeaders);
+
+    if (response.statusCode == 200) {
+      var vacantList = vacantsResponseFromJson(response.body);
+      return vacantList;
+    } else {
+      throw Exception('No se pudo cargar la lista de vacantes');
+    }
+  }
+
+  static Future<List<VacantsResponse>> searchVacants(String query) async {
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+    };
+
+    var url = Uri.https(Config.apiUrl, "${Config.search}/$query");
     print(url);
     var response = await client.get(url, headers: requestHeaders);
 
