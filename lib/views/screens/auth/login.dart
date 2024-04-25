@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
@@ -11,6 +12,7 @@ import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:jobhubv2_0/views/common/height_spacer.dart';
 import 'package:jobhubv2_0/views/common/styled_container.dart';
 import 'package:jobhubv2_0/views/screens/auth/registration.dart';
+import 'package:jobhubv2_0/views/screens/mainscreen.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -29,9 +31,20 @@ class _LoginPageState extends State<LoginPage> {
     return Consumer<LoginNotifier>(
       builder: (context, loginNotifier, child) {
         return Scaffold(
-          appBar: const PreferredSize(
-              preferredSize: Size.fromHeight(50),
-              child: CustomAppBar(text: 'Inicio de sesión', child: BackBtn())),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50),
+            child: CustomAppBar(
+              text: 'Inicio de sesión',
+              child: GestureDetector(
+                onTap: () {
+                  Get.offAll(() => const Mainscreen());
+                },
+                child: const Icon(
+                  AntDesign.leftcircleo,
+                ),
+              ),
+            ),
+          ),
           body: buildStyleContainer(
               context,
               Padding(
@@ -100,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(() => const RegistrationPage());
+                          Get.offAll(() => const RegistrationPage());
                         },
                         child: ReusableText(
                             text: '¿Aún no tienes una cuenta? Regístrate aquí.',
