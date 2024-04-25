@@ -9,6 +9,7 @@ import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:jobhubv2_0/views/common/heading_widget.dart';
 import 'package:jobhubv2_0/views/common/search.dart';
+import 'package:jobhubv2_0/views/screens/auth/login.dart';
 import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/vacant_list_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/RecentList.dart';
@@ -37,10 +38,12 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(12.0.h),
                     child: GestureDetector(
                       onTap: () {
-                        Get.to(() => const ProfileScreen(drawer: false));
+                        //Get.to(() => const ProfileScreen(drawer: false));
+                        Get.to(() => const LoginPage());
                       },
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50)),
                         child: CachedNetworkImage(
                           height: 25.w,
                           width: 25.w,
