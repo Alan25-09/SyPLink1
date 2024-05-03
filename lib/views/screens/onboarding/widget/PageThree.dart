@@ -5,6 +5,7 @@ import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/views/common/custom_outline_btn.dart';
 import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:jobhubv2_0/views/screens/mainscreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /* Clase donde se construye la página tres de la introducción */
 class PageThree extends StatelessWidget {
@@ -52,8 +53,11 @@ class PageThree extends StatelessWidget {
             // Botón personalizado que dirige a la página de inicio
             CustomOutlineBtn(
                 // Al hacer click, ejecutar acción de ir a la página de inicio
-                onTap: () {
-                  Get.to(() => Mainscreen());
+                onTap: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setBool('entrypoint', true);
+                  Get.to(() => const Mainscreen());
                 },
                 // Propiedades del botón
                 height: height * 0.05,

@@ -13,12 +13,21 @@ import 'package:jobhubv2_0/controllers/zoom_provider.dart';
 import 'package:jobhubv2_0/views/screens/mainscreen.dart';
 import 'package:jobhubv2_0/views/screens/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-Widget defaultHome =
-    const OnboardingScreen(); // ** Comentario de prueba para la branch main A.F
+Widget defaultHome = const OnboardingScreen();
 
-///TODO: Hook the app to firebase using firebase click
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  final entrypoint = prefs.getBool('entrypoint') ?? false;
+
+  if (entrypoint == true) {
+    defaultHome = const Mainscreen();
+  }
+
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => OnBoardNotifier()),
     ChangeNotifierProvider(create: (context) => LoginNotifier()),
