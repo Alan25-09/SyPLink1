@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthHelper {
   static var client = https.Client();
 
-  static Future<bool> signup(model) async {
+  static Future<bool> signup(String model) async {
     try {
       Map<String, String> requestHeaders = {
         'Content-Type': 'application/json',
@@ -25,6 +25,7 @@ class AuthHelper {
           await client.post(url, headers: requestHeaders, body: model);
 
       if (response.statusCode == 201) {
+        print('Registro exitoso');
         return true;
       } else {
         return false;

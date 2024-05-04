@@ -6,6 +6,7 @@ import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/signup_provider.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
+import 'package:jobhubv2_0/models/request/auth/signup_model.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/app_style.dart';
@@ -130,8 +131,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         Consumer<ZoomNotifier>(
                             builder: (context, zoomNotifier, child) {
                           return CustomButton(
-                            text: "Iniciar sesión",
-                            onTap: () {},
+                            text: "Registrarse",
+                            onTap: () {
+                              signUpNotifier.loader = true;
+
+                              SignupModel model = SignupModel(
+                                  username: username.text,
+                                  email: email.text,
+                                  password: password.text);
+
+                              String newModel = signupModelToJson(model);
+
+                              signUpNotifier.signUp(newModel);
+                            },
                           );
                         }),
                         const HeightSpacer(size: 30),
