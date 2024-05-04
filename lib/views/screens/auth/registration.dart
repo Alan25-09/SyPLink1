@@ -131,7 +131,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         Consumer<ZoomNotifier>(
                             builder: (context, zoomNotifier, child) {
                           return CustomButton(
-                            text: "Iniciar sesión",
+                            text: "Registrarse",
                             onTap: () {
                               signUpNotifier.loader = true;
 
