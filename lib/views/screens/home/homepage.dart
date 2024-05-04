@@ -38,8 +38,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(12.0.h),
                     child: GestureDetector(
                       onTap: () {
-                        //Get.to(() => const ProfileScreen(drawer: false));
-                        Get.to(() => const LoginPage());
+                        Get.to(() => const ProfileScreen(drawer: false));
                       },
                       child: ClipRRect(
                         borderRadius:

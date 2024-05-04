@@ -35,33 +35,31 @@ class AuthHelper {
     }
   }
 
-  static Future<bool> login(model) async {
-    try {
-      Map<String, String> requestHeaders = {
-        'Content-Type': 'application/json',
-      };
+  static Future<bool> login(String model) async {
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+    };
 
-      var url = Uri.https(Config.apiUrl, Config.loginUrl);
+    var url = Uri.https(Config.apiUrl, Config.loginUrl);
 
-      var response =
-          await client.post(url, headers: requestHeaders, body: model);
+    var response = await client.post(url, headers: requestHeaders, body: model);
 
-      if (response.statusCode == 200) {
-        final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (response.statusCode == 200) {
+      print('Inicio de sesión exitoso');
 
-        var user = loginResponseModelFromJson(response.body);
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        await prefs.setString('token', user.userToken);
-        await prefs.setString('userId', user.id);
-        await prefs.setString('profile', user.profile);
-        await prefs.setString('username', user.username);
-        await prefs.setBool('loggedIn', true);
+      var user = loginResponseModelFromJson(response.body);
 
-        return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
+      await prefs.setString('token', user.userToken);
+      await prefs.setString('userId', user.id);
+      await prefs.setString('uid', user.uid);
+      await prefs.setString('profile', user.profile);
+      await prefs.setString('username', user.username);
+      await prefs.setBool('loggedIn', true);
+
+      return true;
+    } else {
       return false;
     }
   }
