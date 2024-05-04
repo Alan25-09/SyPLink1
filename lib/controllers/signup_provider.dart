@@ -44,10 +44,9 @@ class SignUpNotifier extends ChangeNotifier {
         Get.offAll(() => const LoginPage());
       } else {
         loader = false;
-        Get.snackbar(
-            'Error al iniciar sesión', 'Revisa tus credenciales de acceso',
+        Get.snackbar('Error al registrarse', 'Revisa la información ingresada',
             colorText: Color(kLight.value),
-            backgroundColor: Color(kOrange.value),
+            backgroundColor: Color(kVerde.value),
             icon: const Icon(Icons.add_alert));
       }
     });

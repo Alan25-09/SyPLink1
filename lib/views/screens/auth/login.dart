@@ -4,6 +4,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
+import 'package:jobhubv2_0/models/request/auth/login_model.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/custom_btn.dart';
@@ -31,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Consumer<LoginNotifier>(
       builder: (context, loginNotifier, child) {
+        loginNotifier.getPref();
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(50),
@@ -108,7 +110,16 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context, zoomNotifier, child) {
                           return CustomButton(
                             text: "Iniciar sesión",
-                            onTap: () {},
+                            onTap: () {
+                              loginNotifier.loader = true;
+
+                              LoginModel model = LoginModel(
+                                  email: email.text, password: password.text);
+
+                              String newModel = loginModelToJson(model);
+
+                              loginNotifier.login(newModel, zoomNotifier);
+                            },
                           );
                         }),
                         const HeightSpacer(size: 30),
