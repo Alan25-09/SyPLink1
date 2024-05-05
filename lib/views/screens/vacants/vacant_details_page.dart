@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/vacants_provider.dart';
 import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
@@ -31,6 +32,7 @@ class VacantDetails extends StatefulWidget {
 class _VacantDetailsState extends State<VacantDetails> {
   @override
   Widget build(BuildContext context) {
+    var loginNotifier = Provider.of<LoginNotifier>(context);
     return Consumer<VacantsNotifier>(
       builder: (context, vacantsNotifier, child) {
         vacantsNotifier.getVacant(widget.id);
@@ -38,13 +40,15 @@ class _VacantDetailsState extends State<VacantDetails> {
           appBar: PreferredSize(
               preferredSize: const Size.fromHeight(50),
               child: CustomAppBar(actions: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 12.w),
-                    child: const Icon(Fontisto.bookmark_alt),
-                  ),
-                )
+                loginNotifier.loggedIn != false
+                    ? GestureDetector(
+                        onTap: () {},
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 12.w),
+                          child: const Icon(Fontisto.bookmark_alt),
+                        ),
+                      )
+                    : const SizedBox.shrink()
               ], child: const BackBtn())),
           body: buildStyleContainer(
             context,
@@ -157,7 +161,9 @@ class _VacantDetailsState extends State<VacantDetails> {
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 20.0.w),
                               child: CustomOutlineBtn(
-                                text: "Iniciar sesión",
+                                text: !loginNotifier.loggedIn
+                                    ? "Iniciar sesión"
+                                    : "Postularse",
                                 height: height * 0.06,
                                 color: Color(kLight.value),
                                 color2: Color(kVerde.value),

@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     "Busca,\nencuentra y aplica",
-                    style: appStyle(38, Color(kDark.value), FontWeight.bold),
+                    style: appStyle(30, Color(kDark.value), FontWeight.bold),
                   ),
                   SizedBox(
                     height: 20.h,

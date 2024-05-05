@@ -14,7 +14,7 @@ class RecentVacants extends StatelessWidget {
       builder: (context, vacantsNotifier, child) {
         vacantsNotifier.getRecent();
         return SizedBox(
-          height: height * 0.28,
+          height: height * 0.27,
           child: FutureBuilder<List<VacantsResponse>>(
               future: vacantsNotifier.recentVacants,
               builder: (context, snapshot) {

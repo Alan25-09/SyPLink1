@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
-import 'package:jobhubv2_0/views/applications/applied_jobs.dart';
+import 'package:jobhubv2_0/views/applications/applied_vacants.dart';
 import 'package:jobhubv2_0/views/common/drawer/drawerScreen.dart';
 import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:jobhubv2_0/views/common/reusable_text.dart';
@@ -53,10 +53,10 @@ class _MainscreenState extends State<Mainscreen> {
         return const Bookmarks();
 
       case 3:
-        return const AppliedJobs();
+        return const AppliedVacants();
 
       case 4:
-        return ProfileScreen(
+        return const ProfileScreen(
           drawer: true,
         );
 

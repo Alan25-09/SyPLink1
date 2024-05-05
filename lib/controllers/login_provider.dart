@@ -72,4 +72,10 @@ class LoginNotifier extends ChangeNotifier {
     userUid = prefs.getString('uid') ?? '';
     profile = prefs.getString('profile') ?? '';
   }
+
+  logout() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('loggedIn', false);
+    await prefs.remove('token');
+  }
 }
