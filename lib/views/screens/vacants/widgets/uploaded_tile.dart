@@ -66,21 +66,21 @@ class UploadedTile extends StatelessWidget {
                               child: ReusableText(
                                   text: vacant.title,
                                   style: appStyle(
-                                      12, Color(kDark.value), FontWeight.w500)),
+                                      16, Color(kDark.value), FontWeight.w500)),
                             ),
                             SizedBox(
                               width: width * 0.65,
                               child: ReusableText(
                                   text: vacant.responsibleName,
                                   style: appStyle(
-                                      16, Color(kDark.value), FontWeight.w500)),
+                                      14, Color(kDark.value), FontWeight.w500)),
                             ),
                             SizedBox(
                               width: width * 0.65,
                               child: ReusableText(
                                   text: vacant.schedule,
                                   style: appStyle(
-                                      12, Color(kDark.value), FontWeight.w500)),
+                                      14, Color(kDark.value), FontWeight.w500)),
                             )
                           ],
                         ),
