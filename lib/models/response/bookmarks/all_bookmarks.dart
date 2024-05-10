@@ -4,68 +4,62 @@
 
 import 'dart:convert';
 
-List<AllBookMarks> allBookMarksFromJson(String str) => List<AllBookMarks>.from(json.decode(str).map((x) => AllBookMarks.fromJson(x)));
-
+List<AllBookMarks> allBookMarksFromJson(String str) => List<AllBookMarks>.from(
+    json.decode(str).map((x) => AllBookMarks.fromJson(x)));
 
 class AllBookMarks {
-    final String id;
-    final Job job;
-    final String userId;
+  final String id;
+  final Vacant vacant;
+  final String userId;
 
-    AllBookMarks({
-        required this.id,
-        required this.job,
-        required this.userId,
-    });
+  AllBookMarks({
+    required this.id,
+    required this.vacant,
+    required this.userId,
+  });
 
-    factory AllBookMarks.fromJson(Map<String, dynamic> json) => AllBookMarks(
+  factory AllBookMarks.fromJson(Map<String, dynamic> json) => AllBookMarks(
         id: json["_id"],
-        job: Job.fromJson(json["job"]),
+        vacant: Vacant.fromJson(json["vacant"]),
         userId: json["userId"],
-    );
-
+      );
 }
 
-class Job {
-    final String id;
-    final String title;
-    final String location;
-    final String company;
-    final bool hiring;
-    final String salary;
-    final String period;
-    final String contract;
-    final String imageUrl;
-    final String agentId;
-    final String agentName;
+class Vacant {
+  final String id;
+  final String title;
+  final String area;
+  final String responsibleId;
+  final String responsibleName;
+  final String description;
+  final List<String> requirements;
+  final String schedule;
+  final bool status;
+  final String imageUrl;
 
-    Job({
-        required this.id,
-        required this.title,
-        required this.location,
-        required this.company,
-        required this.hiring,
-        required this.salary,
-        required this.period,
-        required this.contract,
-        required this.imageUrl,
-        required this.agentId,
-        required this.agentName,
-    });
+  Vacant({
+    required this.id,
+    required this.title,
+    required this.area,
+    required this.responsibleId,
+    required this.responsibleName,
+    required this.description,
+    required this.requirements,
+    required this.schedule,
+    required this.status,
+    required this.imageUrl,
+  });
 
-    factory Job.fromJson(Map<String, dynamic> json) => Job(
+  factory Vacant.fromJson(Map<String, dynamic> json) => Vacant(
         id: json["_id"],
         title: json["title"],
-        location: json["location"],
-        company: json["company"],
-        hiring: json["hiring"],
-        salary: json["salary"],
-        agentName: json["agentName"],
-        period: json["period"],
-        contract: json["contract"],
+        area: json["area"],
+        responsibleId: json["responsibleId"],
+        responsibleName: json["responsibleName"],
+        description: json["description"],
+        requirements: List<String>.from(json["requirements"].map((x) => x)),
+        schedule: json["schedule"],
+        status: json["status"],
         imageUrl: json["imageUrl"],
-        agentId: json["agentId"],
-    );
-
- 
+      );
 }
