@@ -6,7 +6,7 @@ import 'package:jobhubv2_0/services/config.dart';
 class VacantsHelper {
   static var client = https.Client();
 
-  static Future<List<VacantsResponse>> getVacants() async {
+  static Future<List<VacantsResponse>> getVacants(String id) async {
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
     };

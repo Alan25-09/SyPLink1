@@ -5,6 +5,7 @@ import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/vacants_provider.dart';
 import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
+import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/custom_outline_btn.dart';
@@ -30,6 +31,18 @@ class VacantDetails extends StatefulWidget {
 }
 
 class _VacantDetailsState extends State<VacantDetails> {
+  late Future<GetVacantRes> vacant;
+
+  @override
+  void initState() {
+    getVacant();
+    super.initState();
+  }
+
+  getVacant() {
+    vacant = VacantsHelper.getVacant(widget.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     var loginNotifier = Provider.of<LoginNotifier>(context);
@@ -53,7 +66,7 @@ class _VacantDetailsState extends State<VacantDetails> {
           body: buildStyleContainer(
             context,
             FutureBuilder<GetVacantRes>(
-                future: vacantsNotifier.vacant,
+                future: vacant,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const PageLoader();

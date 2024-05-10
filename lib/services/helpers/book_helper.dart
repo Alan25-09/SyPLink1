@@ -66,7 +66,7 @@ class BookMarkHelper {
       };
 
       var url =
-          Uri.https(Config.apiUrl, "${Config.singleBookmarkUrl}/$vacantId");
+          Uri.https(Config.apiUrl, "${Config.singleBookmarkUrl}$vacantId");
 
       var response = await client.get(url, headers: requestHeaders);
 
