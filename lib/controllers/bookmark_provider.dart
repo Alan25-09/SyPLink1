@@ -1,10 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobhubv2_0/models/response/bookmarks/all_bookmarks.dart';
 import 'package:jobhubv2_0/services/helpers/book_helper.dart';
 import 'package:jobhubv2_0/views/common/exports.dart';
 
 class BookNotifier extends ChangeNotifier {
+  late Future<List<AllBookMarks>> bookmarks;
+
   bool _bookmark = false;
   bool get bookmark => _bookmark;
   set isBookMark(bool newState) {
@@ -48,5 +51,9 @@ class BookNotifier extends ChangeNotifier {
             icon: const Icon(Icons.bookmark_remove_outlined));
       }
     });
+  }
+
+  getBookMarks() {
+    bookmarks = BookMarkHelper.getAllBookmarks();
   }
 }
