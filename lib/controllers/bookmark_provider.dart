@@ -31,14 +31,14 @@ class BookNotifier extends ChangeNotifier {
   }
 
   getBookMark(String vacantId) {
-    BookMarkHelper.getBookMark(vacantId).then((bookmark) {
-      if (bookmark == null) {
-        isBookMark = false;
-      } else {
-        isBookMark = bookmark.status;
-        isBookMarkId = bookmark.bookmarkId;
-      }
-    });
+    var bookmark = BookMarkHelper.getBookMark(vacantId);
+
+    bookmark.then((value) => {
+          if (value == null)
+            {isBookMark = false, isBookMarkId = ''}
+          else
+            {isBookMark = true, isBookMarkId = value.bookmarkId}
+        });
   }
 
   deleteBookMark(String vacantId) {
@@ -50,10 +50,12 @@ class BookNotifier extends ChangeNotifier {
             backgroundColor: Color(kVerde.value),
             icon: const Icon(Icons.bookmark_remove_outlined));
       }
+      isBookMark = false;
     });
   }
 
-  getBookMarks() {
+  Future<List<AllBookMarks>> getBookMarks() {
     bookmarks = BookMarkHelper.getAllBookmarks();
+    return bookmarks;
   }
 }

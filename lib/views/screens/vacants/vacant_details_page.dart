@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:jobhubv2_0/controllers/bookmark_provider.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/vacants_provider.dart';
+import 'package:jobhubv2_0/models/response/bookmarks/book_res.dart';
 import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
+import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/custom_outline_btn.dart';
@@ -30,6 +33,18 @@ class VacantDetails extends StatefulWidget {
 }
 
 class _VacantDetailsState extends State<VacantDetails> {
+  late Future<GetVacantRes> vacant;
+
+  @override
+  void initState() {
+    getVacant();
+    super.initState();
+  }
+
+  getVacant() {
+    vacant = VacantsHelper.getVacant(widget.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     var loginNotifier = Provider.of<LoginNotifier>(context);
@@ -41,19 +56,36 @@ class _VacantDetailsState extends State<VacantDetails> {
               preferredSize: const Size.fromHeight(50),
               child: CustomAppBar(actions: [
                 loginNotifier.loggedIn != false
-                    ? GestureDetector(
-                        onTap: () {},
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 12.w),
-                          child: const Icon(Fontisto.bookmark_alt),
-                        ),
+                    ? Consumer<BookNotifier>(
+                        builder: (context, bookNotifier, child) {
+                          bookNotifier.getBookMark(widget.id);
+                          return GestureDetector(
+                            onTap: () {
+                              if (bookNotifier.bookmark == true) {
+                                bookNotifier
+                                    .deleteBookMark(bookNotifier.bookmarkId);
+                              } else {
+                                BookMarkReqRes model =
+                                    BookMarkReqRes(vacant: widget.id);
+                                var newModel = bookMarkReqResToJson(model);
+                                bookNotifier.addBookMark(newModel);
+                              }
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 12.w),
+                              child: Icon(bookNotifier.bookmark == false
+                                  ? Fontisto.bookmark
+                                  : Fontisto.bookmark_alt),
+                            ),
+                          );
+                        },
                       )
                     : const SizedBox.shrink()
               ], child: const BackBtn())),
           body: buildStyleContainer(
             context,
             FutureBuilder<GetVacantRes>(
-                future: vacantsNotifier.vacant,
+                future: vacant,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const PageLoader();

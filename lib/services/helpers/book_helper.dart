@@ -66,7 +66,7 @@ class BookMarkHelper {
       };
 
       var url =
-          Uri.https(Config.apiUrl, "${Config.singleBookmarkUrl}/$vacantId");
+          Uri.https(Config.apiUrl, "${Config.singleBookmarkUrl}$vacantId");
 
       var response = await client.get(url, headers: requestHeaders);
 
@@ -81,7 +81,7 @@ class BookMarkHelper {
     }
   }
 
-  static Future<bool> deleteBookMarks(String vacantId) async {
+  static Future<bool> deleteBookMarks(String bookmarkId) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
 
@@ -90,7 +90,7 @@ class BookMarkHelper {
       'authorization': 'Bearer $token'
     };
 
-    var url = Uri.https(Config.apiUrl, "${Config.bookmarkUrl}/$vacantId");
+    var url = Uri.https(Config.apiUrl, "${Config.bookmarkUrl}/$bookmarkId");
 
     var response = await client.delete(url, headers: requestHeaders);
 
