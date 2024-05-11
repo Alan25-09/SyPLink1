@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           width: width,
                           height: 40.h,
                           text: 'Cerrar sesión',
-                          color: Color(kLight.value),
+                          color: Color(kVerde.value),
                           onTap: () {
                             zoomNotifier.currentIndex = 0;
                             loginNotifier.logout();

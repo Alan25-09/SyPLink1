@@ -24,7 +24,7 @@ class LoginNotifier extends ChangeNotifier {
   bool get entrypoint => _entrypoint ?? false;
 
   set entrypoint(bool newState) {
-    _obscureText = newState;
+    _entrypoint = newState;
     notifyListeners();
   }
 
@@ -33,7 +33,7 @@ class LoginNotifier extends ChangeNotifier {
   bool get loggedIn => _loggedIn ?? false;
 
   set loggedIn(bool newState) {
-    _obscureText = newState;
+    _loggedIn = newState;
     notifyListeners();
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/drawer/drawer_widget.dart';
 import 'package:jobhubv2_0/views/common/exports.dart';
@@ -15,6 +16,7 @@ import 'package:jobhubv2_0/views/screens/vacants/vacant_list_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/RecentList.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/popularVacants.dart';
 import 'package:jobhubv2_0/views/search/search_page.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,6 +31,8 @@ class _HomePageState extends State<HomePage> {
       "https://img.freepik.com/vector-premium/perfil-avatar-hombre-icono-redondo_24640-14044.jpg";
   @override
   Widget build(BuildContext context) {
+    var loginNotifier = Provider.of<LoginNotifier>(context);
+    loginNotifier.getPref();
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(50.h),
