@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/bookmark_provider.dart';
 import 'package:jobhubv2_0/controllers/image_provider.dart';
+import 'package:jobhubv2_0/controllers/skills_provider.dart';
 import 'package:jobhubv2_0/controllers/vacants_provider.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/onboarding_provider.dart';
@@ -38,6 +39,7 @@ void main() async {
     ChangeNotifierProvider(create: (context) => ImageUpoader()),
     ChangeNotifierProvider(create: (context) => ProfileNotifier()),
     ChangeNotifierProvider(create: (context) => BookNotifier()),
+    ChangeNotifierProvider(create: (context) => SkillsNotifier()),
   ], child: const MyApp()));
 }
 
