@@ -6,6 +6,7 @@ import 'package:jobhubv2_0/models/request/auth/profile_update_model.dart';
 import 'package:jobhubv2_0/models/request/auth/signup_model.dart';
 import 'package:jobhubv2_0/models/response/auth/login_res_model.dart';
 import 'package:jobhubv2_0/models/response/auth/profile_model.dart';
+import 'package:jobhubv2_0/models/response/auth/skills.dart';
 import 'package:jobhubv2_0/services/config.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -61,6 +62,64 @@ class AuthHelper {
       return true;
     } else {
       return false;
+    }
+  }
+
+  static Future<ProfileRes> getProfile() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    if (token == null) {
+      throw Exception('No se proporcionó el token de autenticación');
+    }
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'authorization': 'Bearer $token'
+    };
+
+    var url = Uri.https(Config.apiUrl, Config.profileUrl);
+
+    try {
+      var response = await client.get(url, headers: requestHeaders);
+
+      if (response.statusCode == 200) {
+        var profile = profileResFromJson(response.body);
+        return profile;
+      } else {
+        throw Exception('Fallo al obtener el tipo de perfil');
+      }
+    } catch (e) {
+      throw Exception('No se proporcionó el token de autenticación $e');
+    }
+  }
+
+  static Future<List<Skills>> getSkills() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    if (token == null) {
+      throw Exception('No se proporcionó el token de autenticación');
+    }
+
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+      'authorization': 'Bearer $token'
+    };
+
+    var url = Uri.https(Config.apiUrl, Config.skillsUrl);
+
+    try {
+      var response = await client.get(url, headers: requestHeaders);
+
+      if (response.statusCode == 200) {
+        var skills = skillsFromJson(response.body);
+        return skills;
+      } else {
+        throw Exception('Fallo al obtener las skills');
+      }
+    } catch (e) {
+      throw Exception('Fallo al obtener las skills $e');
     }
   }
 }
