@@ -24,15 +24,13 @@ class _BookmarksState extends State<Bookmarks> {
   Widget build(BuildContext context) {
     var loginNotifier = Provider.of<LoginNotifier>(context);
     return Scaffold(
-      backgroundColor: Color(kVerde.value),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.h),
         child: CustomAppBar(
-          color: Color(kVerde.value),
           text: !loginNotifier.loggedIn ? "" : "Favoritos",
           child: Padding(
             padding: EdgeInsets.all(12.0.h),
-            child: DrawerWidget(color: Color(kLight.value)),
+            child: DrawerWidget(color: Color(kDark.value)),
           ),
         ),
       ),

@@ -33,35 +33,33 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late Future<ProfileRes> userProfile;
+  late Future<ProfileRes?> userProfile;
   String username = '';
 
   @override
   void initState() {
     super.initState();
-    getProfile();
+    userProfile = getProfile();
     getName();
   }
 
-  getProfile() {
+  Future<ProfileRes?> getProfile() async {
     var loginNotifier = Provider.of<LoginNotifier>(context, listen: false);
-    if (widget.drawer == false && loginNotifier.loggedIn == true) {
-      userProfile = AuthHelper.getProfile();
-    } else if (widget.drawer == true && loginNotifier.loggedIn == true) {
-      userProfile = AuthHelper.getProfile();
-    } else {}
+    if (loginNotifier.loggedIn) {
+      return AuthHelper.getProfile();
+    } else {
+      return null;
+    }
   }
 
-  getName() async {
+  Future<void> getName() async {
     var loginNotifier = Provider.of<LoginNotifier>(context, listen: false);
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (widget.drawer == false && loginNotifier.loggedIn == true) {
-      username = prefs.getString('username') ?? '';
-      userProfile = AuthHelper.getProfile();
-    } else if (widget.drawer == true && loginNotifier.loggedIn == true) {
-      username = prefs.getString('username') ?? '';
-      userProfile = AuthHelper.getProfile();
-    } else {}
+    if (loginNotifier.loggedIn) {
+      setState(() {
+        username = prefs.getString('username') ?? '';
+      });
+    }
   }
 
   @override
@@ -69,140 +67,139 @@ class _ProfileScreenState extends State<ProfileScreen> {
     var zoomNotifier = Provider.of<ZoomNotifier>(context);
     var loginNotifier = Provider.of<LoginNotifier>(context);
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.h),
-          child: CustomAppBar(
-            text: loginNotifier.loggedIn ? username.toUpperCase() : '',
-            child: Padding(
-              padding: EdgeInsets.all(12.0.h),
-              child: widget.drawer == false
-                  ? const BackBtn()
-                  : DrawerWidget(
-                      color: Color(kDark.value),
-                    ),
-            ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.h),
+        child: CustomAppBar(
+          text: 'Perfil',
+          child: Padding(
+            padding: EdgeInsets.all(12.0.h),
+            child: widget.drawer == false
+                ? const BackBtn()
+                : DrawerWidget(
+                    color: Color(kDark.value),
+                  ),
           ),
         ),
-        body: loginNotifier.loggedIn == false
-            ? const NonUser()
-            : FutureBuilder(
-                future: userProfile,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const PageLoader();
-                  } else if (snapshot.hasError) {
-                    return Text("Error: ${snapshot.error}");
-                  } else {
-                    var profile = snapshot.data;
-                    return buildStyleContainer(
-                        context,
-                        ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+      ),
+      body: FutureBuilder(
+        future: userProfile,
+        builder: (context, AsyncSnapshot<ProfileRes?> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const PageLoader();
+          } else if (snapshot.hasError) {
+            return Text("Error: ${snapshot.error}");
+          } else if (snapshot.data == null) {
+            return const NonUser();
+          } else {
+            var profile = snapshot.data!;
+            return buildStyleContainer(
+              context,
+              ListView(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.07,
+                    decoration: BoxDecoration(
+                      color: Color(kVerde.value),
+                      borderRadius: BorderRadius.all(Radius.circular(12.w)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
                           children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 12.w),
-                              width: width,
-                              height: height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Color(kVerde.value),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(12.w)),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      CircularPicture(
-                                        image: profile!.profile,
-                                        w: 50,
-                                        h: 50,
-                                      ),
-                                      const WidthSpacer(width: 20),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          ReusableText(
-                                              text: profile.username,
-                                              style: appStyle(
-                                                  16,
-                                                  Color(kLight.value),
-                                                  FontWeight.w400)),
-                                          ReusableText(
-                                              text: profile.email,
-                                              style: appStyle(
-                                                  14,
-                                                  Color(kLight.value),
-                                                  FontWeight.w400)),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  GestureDetector(
-                                      onTap: () {},
-                                      child: const Icon(Feather.edit)),
-                                ],
-                              ),
+                            CircularPicture(
+                              image: profile.profile,
+                              w: 50,
+                              h: 50,
                             ),
-                            const HeightSpacer(size: 20),
-                            const SkillWidget(),
-                            const HeightSpacer(size: 20),
-                            !profile.isAgent
-                                ? Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ReusableText(
-                                          text: 'Panel de prestatario',
-                                          style: appStyle(
-                                              15,
-                                              Color(kDark.value),
-                                              FontWeight.w600)),
-                                      const HeightSpacer(size: 20),
-                                      CustomOutlineBtn(
-                                        width: width,
-                                        height: 40.h,
-                                        text: 'Publicar vacante',
-                                        color: Color(kVerde.value),
-                                        onTap: () {},
-                                      ),
-                                      const HeightSpacer(size: 20),
-                                      CustomOutlineBtn(
-                                        width: width,
-                                        height: 40.h,
-                                        text: 'Actualizar información',
-                                        color: Color(kVerde.value),
-                                        onTap: () {},
-                                      ),
-                                    ],
-                                  )
-                                : CustomOutlineBtn(
-                                    width: width,
-                                    height: 40.h,
-                                    text: 'Aplicar para ser prestatario',
-                                    color: Color(kVerde.value),
-                                    onTap: () {},
-                                  ),
+                            const WidthSpacer(width: 20),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ReusableText(
+                                    text: profile.username,
+                                    style: appStyle(16, Color(kLight.value),
+                                        FontWeight.w400)),
+                                ReusableText(
+                                    text: profile.email,
+                                    style: appStyle(14, Color(kLight.value),
+                                        FontWeight.w400)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Icon(
+                            Feather.edit,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const HeightSpacer(size: 20),
+                  const SkillWidget(),
+                  const HeightSpacer(size: 20),
+                  !profile.isAgent
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ReusableText(
+                                text: 'Panel de prestatario',
+                                style: appStyle(
+                                    15, Color(kDark.value), FontWeight.w600)),
                             const HeightSpacer(size: 20),
                             CustomOutlineBtn(
-                              width: width,
+                              width: MediaQuery.of(context).size.width,
                               height: 40.h,
-                              text: 'Cerrar sesión',
+                              text: 'Publicar vacante',
                               color: Color(kVerde.value),
-                              onTap: () {
-                                zoomNotifier.currentIndex = 0;
-                                loginNotifier.logout();
-                                Get.to(() => const Mainscreen());
-                              },
-                            )
+                              onTap: () {},
+                            ),
+                            const HeightSpacer(size: 20),
+                            CustomOutlineBtn(
+                              width: MediaQuery.of(context).size.width,
+                              height: 40.h,
+                              text: 'Actualizar información',
+                              color: Color(kVerde.value),
+                              onTap: () {},
+                            ),
                           ],
-                        ));
-                  }
-                }));
+                        )
+                      : CustomOutlineBtn(
+                          width: MediaQuery.of(context).size.width,
+                          height: 40.h,
+                          text: 'Aplicar para ser prestatario',
+                          color: Color(kVerde.value),
+                          onTap: () {},
+                        ),
+                  const HeightSpacer(size: 20),
+                  CustomOutlineBtn(
+                    width: MediaQuery.of(context).size.width,
+                    height: 40.h,
+                    text: 'Cerrar sesión',
+                    color: Color(kVerde.value),
+                    onTap: () {
+                      zoomNotifier.currentIndex = 0;
+                      loginNotifier.logout();
+                      setState(() {
+                        userProfile = getProfile();
+                      });
+                      Get.to(() => const Mainscreen());
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+        },
+      ),
+    );
   }
 }
 
