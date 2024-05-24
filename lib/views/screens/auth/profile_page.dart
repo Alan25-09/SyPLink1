@@ -20,6 +20,7 @@ import 'package:jobhubv2_0/views/screens/auth/non_user.dart';
 import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
 import 'package:jobhubv2_0/views/screens/auth/widgets/skills.dart';
 import 'package:jobhubv2_0/views/screens/mainscreen.dart';
+import 'package:jobhubv2_0/views/screens/vacants/add_vacant.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -159,7 +160,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               height: 40.h,
                               text: 'Publicar vacante',
                               color: Color(kVerde.value),
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(() => const AddVacant());
+                              },
                             ),
                             const HeightSpacer(size: 20),
                             CustomOutlineBtn(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:get/get.dart';
+import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/bookmark_provider.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
@@ -15,7 +18,9 @@ import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:jobhubv2_0/views/common/height_spacer.dart';
 import 'package:jobhubv2_0/views/common/pages_loader.dart';
 import 'package:jobhubv2_0/views/common/styled_container.dart';
+import 'package:jobhubv2_0/views/screens/vacants/update_vacant.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class VacantDetails extends StatefulWidget {
   const VacantDetails(
@@ -34,15 +39,21 @@ class VacantDetails extends StatefulWidget {
 
 class _VacantDetailsState extends State<VacantDetails> {
   late Future<GetVacantRes> vacant;
-
+  bool isAgent = false;
   @override
   void initState() {
     getVacant();
+    getPrefs();
     super.initState();
   }
 
   getVacant() {
     vacant = VacantsHelper.getVacant(widget.id);
+  }
+
+  getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    isAgent = prefs.getBool('isAgent') ?? false;
   }
 
   @override
@@ -191,17 +202,29 @@ class _VacantDetailsState extends State<VacantDetails> {
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Padding(
-                              padding: EdgeInsets.only(bottom: 20.0.w),
-                              child: CustomOutlineBtn(
-                                text: !loginNotifier.loggedIn
-                                    ? "Iniciar sesión"
-                                    : "Postularse",
-                                height: height * 0.06,
-                                color: Color(kLight.value),
-                                color2: Color(kVerde.value),
-                              ),
-                            ),
-                          ),
+                                padding: EdgeInsets.only(bottom: 20.0.w),
+                                child: !isAgent
+                                    ? CustomOutlineBtn(
+                                        text: !loginNotifier.loggedIn
+                                            ? "Iniciar sesión"
+                                            : "Postularse",
+                                        height: height * 0.06,
+                                        onTap: () {},
+                                        color: Color(kLight.value),
+                                        color2: Color(kVerde.value),
+                                      )
+                                    : CustomOutlineBtn(
+                                        text: 'Editar Vacante',
+                                        onTap: () {
+                                          vacantUpdate = vacant;
+                                          Get.off(() => const UpdateVacant());
+                                        },
+                                        height: height * 0.06,
+                                        color: Color(kLight.value),
+                                        color2: Color(kVerde.value),
+                                      )),
+                          )
+                          //),
                         ],
                       ),
                     );
