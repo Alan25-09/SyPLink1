@@ -7,6 +7,7 @@ class Config {
   static const String vacant = "/api/vacants";
   static const String profileUrl = "/api/users";
   static const String skillsUrl = "/api/users/skills";
+  static const String getAgentsUrl = "/api/users/agents";
   static const String getprofileUrl = "/api/users";
   static const String bookmarkUrl = "/api/bookmarks";
   static const String singleBookmarkUrl = "/api/bookmarks/bookmark/";

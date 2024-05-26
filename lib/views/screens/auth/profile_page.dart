@@ -146,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const HeightSpacer(size: 20),
                   const SkillWidget(),
                   const HeightSpacer(size: 20),
-                  !profile.isAgent
+                  profile.isAgent
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

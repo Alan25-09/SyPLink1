@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
@@ -10,7 +8,6 @@ import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:jobhubv2_0/views/common/heading_widget.dart';
 import 'package:jobhubv2_0/views/common/search.dart';
-import 'package:jobhubv2_0/views/screens/auth/login.dart';
 import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/vacant_list_page.dart';
 import 'package:jobhubv2_0/views/screens/vacants/widgets/RecentList.dart';

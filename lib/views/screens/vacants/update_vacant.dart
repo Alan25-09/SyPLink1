@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/skills_provider.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
 import 'package:jobhubv2_0/models/request/jobs/create_vacant.dart';
@@ -30,10 +28,6 @@ class _UpdateVacantState extends State<UpdateVacant> {
   TextEditingController title =
       TextEditingController(text: vacantUpdate!.title);
   TextEditingController area = TextEditingController(text: vacantUpdate!.area);
-  TextEditingController responibleId =
-      TextEditingController(text: vacantUpdate!.responsibleId);
-  TextEditingController responsibleName =
-      TextEditingController(text: vacantUpdate!.responsibleName);
   TextEditingController description =
       TextEditingController(text: vacantUpdate!.description);
   TextEditingController schedule =
@@ -112,13 +106,13 @@ class _UpdateVacantState extends State<UpdateVacant> {
                             child: buildtextfield(
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Titulo"),
-                                hintText: "Titulo",
+                                label: const Text("Título de la vacante"),
+                                hintText: "Ej. Apoyo a los docentes",
                                 controller: title),
                           ),
                           Padding(
@@ -126,13 +120,13 @@ class _UpdateVacantState extends State<UpdateVacant> {
                             child: buildtextfield(
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Area"),
-                                hintText: "Area",
+                                label: const Text("Área"),
+                                hintText: "Prácticas | Servicio",
                                 controller: area),
                           ),
                           Padding(
@@ -140,41 +134,14 @@ class _UpdateVacantState extends State<UpdateVacant> {
                             child: buildtextfield(
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Id del responsable"),
-                                hintText: "Id del responable",
-                                controller: responibleId),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: buildtextfield(
-                                onSubmitted: (value) {
-                                  if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                label: const Text("Responsable"),
-                                hintText: "Responsable",
-                                controller: responsibleName),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: buildtextfield(
-                                onSubmitted: (value) {
-                                  if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                label: const Text("Descripción"),
-                                hintText: "Descripción",
+                                label: const Text("Descripción de la vacante"),
+                                hintText:
+                                    "UPIICSA está buscando estudiantes comprometidos y entusiastas para realizar su servicio social en diversas áreas académicas y administrativas...",
                                 controller: description),
                           ),
                           Padding(
@@ -182,7 +149,7 @@ class _UpdateVacantState extends State<UpdateVacant> {
                             child: buildtextfield(
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
@@ -211,13 +178,13 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                           onSubmitted: (value) {
                                             if (value!.isEmpty &&
                                                 value.contains('https://')) {
-                                              return ("Por favor llene el campo");
+                                              return ("El campo no puede estar vacío");
                                             } else {
                                               return null;
                                             }
                                           },
-                                          label: const Text("Image Url"),
-                                          hintText: "Image Url",
+                                          label: const Text("URL"),
+                                          hintText: "URL de Imagen",
                                           controller: imageController),
                                     ),
                                     GestureDetector(
@@ -245,13 +212,14 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 height: 80,
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Requerimientos"),
-                                hintText: "Requerimientos",
+                                label: const Text("Requerimiento #1"),
+                                hintText:
+                                    "Ej. Tener interés en participar activamente en el desarrollo de proyectos institucionales.",
                                 controller: rq1),
                           ),
                           Padding(
@@ -261,13 +229,14 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 height: 80,
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Requerimientos"),
-                                hintText: "Requerimientos",
+                                label: const Text("Requerimiento #2"),
+                                hintText:
+                                    "Ej. Habilidades interpersonales y capacidad para trabajar en equipo.",
                                 controller: rq2),
                           ),
                           Padding(
@@ -277,13 +246,14 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 height: 80,
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Requerimientos"),
-                                hintText: "Requerimientos",
+                                label: const Text("Requerimiento #3"),
+                                hintText:
+                                    "Ej. Compromiso con la ética y responsabilidad profesional.",
                                 controller: rq3),
                           ),
                           Padding(
@@ -293,13 +263,14 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 height: 80,
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Requerimientos"),
-                                hintText: "Requerimientos",
+                                label: const Text("Requerimiento #4"),
+                                hintText:
+                                    "Ej. Buena capacidad de comunicación verbal y escrita.",
                                 controller: rq4),
                           ),
                           Padding(
@@ -309,31 +280,32 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 height: 80,
                                 onSubmitted: (value) {
                                   if (value!.isEmpty) {
-                                    return ("Por favor llene el campo");
+                                    return ("El campo no puede estar vacío");
                                   } else {
                                     return null;
                                   }
                                 },
-                                label: const Text("Requerimientos"),
-                                hintText: "Requerimientos",
+                                label: const Text("Requerimiento #5"),
+                                hintText:
+                                    "Ej. Manejo básico de herramientas informáticas y software relacionado con su área de estudio.",
                                 controller: rq5),
                           ),
                           CustomOutlineBtn(
                               width: width,
                               onTap: () async {
-                                // SharedPreferences prefs =
-                                //     await SharedPreferences.getInstance();
-                                // String agentName =
-                                //     prefs.getString("username") ?? "";
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                String agentName =
+                                    prefs.getString("username") ?? "";
 
                                 CreateVacantRequest rawModel =
                                     CreateVacantRequest(
                                   title: title.text,
                                   area: area.text,
-                                  responsibleId: responibleId.text,
-                                  responsibleName: responsibleName.text,
+                                  responsibleId: vacantUpdate!.responsibleId,
+                                  responsibleName: agentName,
                                   schedule: schedule.text,
-                                  status: true,
+                                  status: vacantUpdate!.status,
                                   description: description.text,
                                   imageUrl: skillsNotifier.logoUrl,
                                   requirements: [
@@ -343,9 +315,7 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                     rq4.text,
                                     rq5.text,
                                   ],
-                                  //agentName: agentName)
                                 );
-
                                 var model = createVacantRequestToJson(rawModel);
 
                                 VacantsHelper.updateVacant(
@@ -354,7 +324,7 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 Get.to(() => const Mainscreen());
                               },
                               height: 40.h,
-                              text: "Submit",
+                              text: "Actualizar",
                               color: Color(kVerde.value))
                         ],
                       ),
