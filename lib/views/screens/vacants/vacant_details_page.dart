@@ -214,7 +214,7 @@ class _VacantDetailsState extends State<VacantDetails> {
                                         color2: Color(kVerde.value),
                                       )
                                     : CustomOutlineBtn(
-                                        text: 'Editar Vacante',
+                                        text: 'Editar vacante',
                                         onTap: () {
                                           vacantUpdate = vacant;
                                           Get.off(() => const UpdateVacant());

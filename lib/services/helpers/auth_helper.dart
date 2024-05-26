@@ -56,6 +56,7 @@ class AuthHelper {
       await prefs.setString('userId', user.id);
       await prefs.setString('uid', user.uid);
       await prefs.setString('profile', user.profile);
+      await prefs.setBool('isAgent', user.isAgent);
       await prefs.setString('username', user.username);
       await prefs.setBool('loggedIn', true);
 
@@ -116,10 +117,10 @@ class AuthHelper {
         var skills = skillsFromJson(response.body);
         return skills;
       } else {
-        throw Exception('Fallo al obtener las skills');
+        throw Exception('Failed to get skills');
       }
     } catch (e) {
-      throw Exception('Fallo al obtener las skills $e');
+      throw Exception('Failed to get skills $e');
     }
   }
 

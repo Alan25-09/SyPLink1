@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:jobhubv2_0/controllers/agents_provider.dart';
 import 'package:jobhubv2_0/controllers/bookmark_provider.dart';
 import 'package:jobhubv2_0/controllers/image_provider.dart';
 import 'package:jobhubv2_0/controllers/skills_provider.dart';
@@ -40,6 +41,7 @@ void main() async {
     ChangeNotifierProvider(create: (context) => ProfileNotifier()),
     ChangeNotifierProvider(create: (context) => BookNotifier()),
     ChangeNotifierProvider(create: (context) => SkillsNotifier()),
+    ChangeNotifierProvider(create: (context) => AgentNotifier()),
   ], child: const MyApp()));
 }
 
