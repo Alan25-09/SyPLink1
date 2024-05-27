@@ -7,6 +7,7 @@ import 'package:jobhubv2_0/services/helpers/agents_helper.dart';
 class AgentNotifier extends ChangeNotifier {
   late List<Agents> allAgents;
   late Future<List<VacantsResponse>> agentVacants;
+  Agents? agent;
 
   Future<List<Agents>> getAgents() {
     var agents = AgentsHelper.getAgents();

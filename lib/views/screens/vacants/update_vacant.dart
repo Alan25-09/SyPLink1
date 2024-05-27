@@ -298,6 +298,31 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 String agentName =
                                     prefs.getString("username") ?? "";
 
+                                if (title.text.isEmpty ||
+                                    area.text.isEmpty ||
+                                    description.text.isEmpty ||
+                                    schedule.text.isEmpty ||
+                                    rq1.text.isEmpty ||
+                                    rq2.text.isEmpty ||
+                                    rq3.text.isEmpty ||
+                                    rq4.text.isEmpty ||
+                                    rq5.text.isEmpty) {
+                                  Get.snackbar(
+                                    'Error',
+                                    'Todos los campos obligatorios deben ser llenados.',
+                                    colorText: Color(kLight.value),
+                                    backgroundColor: Colors.red,
+                                    icon: const Icon(Icons.error_outline),
+                                  );
+                                  return; // Detener el proceso si algún campo obligatorio está vacío
+                                }
+
+                                // Validación de la URL de imagen
+                                if (imageController.text.isEmpty) {
+                                  imageController.text =
+                                      "https://upload.wikimedia.org/wikipedia/commons/a/a2/UPIICSA_LOGO.jpg";
+                                }
+
                                 CreateVacantRequest rawModel =
                                     CreateVacantRequest(
                                   title: title.text,
@@ -318,10 +343,28 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                 );
                                 var model = createVacantRequestToJson(rawModel);
 
-                                VacantsHelper.updateVacant(
-                                    model, vacantUpdate!.id);
-                                zoomNotifier.currentIndex = 0;
-                                Get.to(() => const Mainscreen());
+                                try {
+                                  await VacantsHelper.updateVacant(
+                                      model, vacantUpdate!.id);
+                                  Get.snackbar(
+                                    'Vacante actualizada',
+                                    'La vacante se ha actualizado con éxito.',
+                                    colorText: Color(kLight.value),
+                                    backgroundColor: Color(kVerde.value),
+                                    icon:
+                                        const Icon(Icons.check_circle_outline),
+                                  );
+                                  zoomNotifier.currentIndex = 0;
+                                  Get.to(() => const Mainscreen());
+                                } catch (error) {
+                                  Get.snackbar(
+                                    'Error',
+                                    'Ocurrió un error al actualizar la vacante.',
+                                    colorText: Color(kLight.value),
+                                    backgroundColor: Colors.red,
+                                    icon: const Icon(Icons.error_outline),
+                                  );
+                                }
                               },
                               height: 40.h,
                               text: "Actualizar",
