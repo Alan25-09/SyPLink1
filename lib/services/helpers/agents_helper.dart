@@ -26,15 +26,13 @@ class AgentsHelper {
     };
 
     var url = Uri.https(Config.apiUrl, Config.getAgentsUrl);
-    print(url);
     var response = await client.get(url, headers: requestHeaders);
-    print(response.statusCode);
 
     if (response.statusCode == 200) {
       var agents = agentsFromJson(response.body);
       return agents;
     } else {
-      throw Exception('No se pudo obtener el marcador');
+      throw Exception('No se pudo obtener el listado de agentes');
     }
   }
 
@@ -43,7 +41,7 @@ class AgentsHelper {
     String? token = prefs.getString('token');
 
     if (token == null) {
-      throw Exception('Failed to get  token');
+      throw Exception('No se pudo obtener el token');
     }
 
     Map<String, String> requestHeaders = {
@@ -58,7 +56,7 @@ class AgentsHelper {
       var agent = getAgentFromJson(response.body);
       return agent;
     } else {
-      throw Exception('Failed to get bookmark');
+      throw Exception('No se pudo obtener la información del agente');
     }
   }
 
