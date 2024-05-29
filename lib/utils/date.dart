@@ -12,11 +12,11 @@ String duTimeLineFormat(DateTime dt) {
   }
   // 1天内
   if (difference.inHours < 24) {
-    return "${difference.inHours} h ago";
+    return "hace ${difference.inHours} horas";
   }
   // 30天内
   else if (difference.inDays < 30) {
-    return "${difference.inDays} d ago";
+    return "hace ${difference.inDays} días";
   }
   // MM-dd
   else if (difference.inDays < 365) {

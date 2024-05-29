@@ -13,6 +13,7 @@ import 'package:jobhubv2_0/controllers/onboarding_provider.dart';
 import 'package:jobhubv2_0/controllers/profile_provider.dart';
 import 'package:jobhubv2_0/controllers/signup_provider.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
+import 'package:jobhubv2_0/firebase_options.dart';
 import 'package:jobhubv2_0/views/screens/mainscreen.dart';
 import 'package:jobhubv2_0/views/screens/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,9 @@ Widget defaultHome = const OnboardingScreen();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
