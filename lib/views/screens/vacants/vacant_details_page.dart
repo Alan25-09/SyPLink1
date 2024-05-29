@@ -1,15 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/bookmark_provider.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/vacants_provider.dart';
+import 'package:jobhubv2_0/controllers/zoom_provider.dart';
 import 'package:jobhubv2_0/models/response/bookmarks/book_res.dart';
 import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
+import 'package:jobhubv2_0/services/firebase_services.dart';
 import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
@@ -18,6 +18,7 @@ import 'package:jobhubv2_0/views/common/exports.dart';
 import 'package:jobhubv2_0/views/common/height_spacer.dart';
 import 'package:jobhubv2_0/views/common/pages_loader.dart';
 import 'package:jobhubv2_0/views/common/styled_container.dart';
+import 'package:jobhubv2_0/views/screens/mainscreen.dart';
 import 'package:jobhubv2_0/views/screens/vacants/update_vacant.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,6 +39,7 @@ class VacantDetails extends StatefulWidget {
 }
 
 class _VacantDetailsState extends State<VacantDetails> {
+  FirebaseServices services = FirebaseServices();
   late Future<GetVacantRes> vacant;
   bool isAgent = false;
   @override
@@ -56,9 +58,28 @@ class _VacantDetailsState extends State<VacantDetails> {
     isAgent = prefs.getBool('isAgent') ?? false;
   }
 
+  createChat(Map<String, dynamic> vacantDetails, List<String> users,
+      String chatRoomId, messageType) {
+    Map<String, dynamic> chatData = {
+      'users': users,
+      'chatRoomId': chatRoomId,
+      'read': false,
+      'vacant': vacantDetails,
+      'profile': profile,
+      'sender': userUid,
+      'name': username,
+      'agentName': widget.responsibleName,
+      'messageType': messageType,
+      'lastChat': "Buen día, estoy interesado/a en esta vacante.",
+      'lastChatTime': Timestamp.now()
+    };
+    services.createChatRoom(chatData);
+  }
+
   @override
   Widget build(BuildContext context) {
     var loginNotifier = Provider.of<LoginNotifier>(context);
+    var zoomNotifier = Provider.of<ZoomNotifier>(context);
     return Consumer<VacantsNotifier>(
       builder: (context, vacantsNotifier, child) {
         vacantsNotifier.getVacant(widget.id);
@@ -209,7 +230,34 @@ class _VacantDetailsState extends State<VacantDetails> {
                                             ? "Iniciar sesión"
                                             : "Postularse",
                                         height: height * 0.06,
-                                        onTap: () {},
+                                        onTap: () async {
+                                          Map<String, dynamic> vacantDetails = {
+                                            'vacant_id': vacant.id,
+                                            'imageUrl': vacant.imageUrl,
+                                            'title': vacant.title
+                                          };
+
+                                          List<String> users = [
+                                            vacant.responsibleId,
+                                            userUid,
+                                          ];
+
+                                          String chatRoomId =
+                                              '${vacant.id}.$userUid';
+
+                                          String messageType = 'text';
+
+                                          bool chatExists = await services
+                                              .chatRoomExist(chatRoomId);
+
+                                          if (chatExists == false) {
+                                            createChat(vacantDetails, users,
+                                                chatRoomId, messageType);
+
+                                            zoomNotifier.currentIndex = 1;
+                                            Get.to(() => const Mainscreen());
+                                          }
+                                        },
                                         color: Color(kLight.value),
                                         color2: Color(kVerde.value),
                                       )

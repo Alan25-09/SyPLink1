@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "229424171149",
+    "project_id": "vacantsearch-836a8",
+    "storage_bucket": "vacantsearch-836a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229424171149:android:8fd366f1b740456a893ac4",
+        "android_client_info": {
+          "package_name": "com.example.jobhubv2_0"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaongRpniWLVedmDenQ5PjecDmWUkoJpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

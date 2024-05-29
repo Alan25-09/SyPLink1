@@ -5,6 +5,7 @@ import 'package:jobhubv2_0/constants/app_constants.dart';
 import 'package:jobhubv2_0/controllers/agents_provider.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/models/request/agents/agents.dart';
+import 'package:jobhubv2_0/utils/date.dart';
 import 'package:jobhubv2_0/views/common/app_style.dart';
 import 'package:jobhubv2_0/views/common/height_spacer.dart';
 import 'package:jobhubv2_0/views/common/reusable_text.dart';
@@ -12,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/drawer/drawer_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:jobhubv2_0/views/common/width_spacer.dart';
 import 'package:jobhubv2_0/views/screens/agent/agent_details.dart';
 import 'package:jobhubv2_0/views/screens/auth/non_user.dart';
 import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
@@ -155,19 +157,38 @@ class _ChatListState extends State<ChatList> with TickerProviderStateMixin {
                           ),
                         )),
                     Positioned(
-                        top: 140.h,
-                        right: 0,
-                        left: 0,
-                        child: Container(
-                          width: width,
-                          height: height,
-                          decoration: BoxDecoration(
-                              color: Color(kLight.value),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20.w),
-                                topRight: Radius.circular(20.w),
-                              )),
-                        ))
+                      top: 140.h,
+                      right: 0,
+                      left: 0,
+                      child: Container(
+                        width: width,
+                        height: height,
+                        decoration: BoxDecoration(
+                          color: Color(kLight.value),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.w),
+                            topRight: Radius.circular(20.w),
+                          ),
+                        ),
+                        child: ListView(
+                          children: [
+                            const HeightSpacer(size: 10),
+                            buildChatRow(
+                                "Fulanito Pérez",
+                                "Le gusta a lo kinky, nasty, y aunque sea fancy",
+                                imageUrl,
+                                1,
+                                DateTime.now()),
+                            buildChatRow(
+                                "Pablo Reyes",
+                                "Se pone cranky si lo hago romantic",
+                                imageUrl,
+                                1,
+                                DateTime.now()),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
                 Container(
@@ -200,5 +221,69 @@ Padding buildAgentAvatar(String name, String filename) {
             style: appStyle(11, Color(kLight.value), FontWeight.normal))
       ],
     ),
+  );
+}
+
+Column buildChatRow(
+    String name, String message, String filename, int msgCount, time) {
+  return Column(
+    children: [
+      FittedBox(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                CircularPicture(image: filename, w: 50, h: 50),
+                const WidthSpacer(width: 15),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ReusableText(
+                        text: name,
+                        style: appStyle(
+                            12, Color(kDarkGris.value), FontWeight.w400)),
+                    const HeightSpacer(size: 5),
+                    SizedBox(
+                      width: width * 0.65,
+                      child: ReusableText(
+                          text: message,
+                          style: appStyle(
+                              12, Color(kDarkGris.value), FontWeight.w400)),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 10.w, left: 15.w, top: 5.w),
+              child: Column(
+                children: [
+                  ReusableText(
+                      text: duTimeLineFormat(time),
+                      style: appStyle(
+                          10, Color(kDarkGris.value), FontWeight.normal)),
+                  const HeightSpacer(size: 15),
+                  if (msgCount > 0)
+                    CircleAvatar(
+                      radius: 7,
+                      backgroundColor: Color(kVerde.value),
+                      child: ReusableText(
+                          text: msgCount.toString(),
+                          style: appStyle(
+                              8, Color(kLight.value), FontWeight.normal)),
+                    )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+      const Divider(
+        indent: 70,
+        height: 20,
+      )
+    ],
   );
 }
