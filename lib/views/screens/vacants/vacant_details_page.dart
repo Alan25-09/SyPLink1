@@ -7,9 +7,11 @@ import 'package:jobhubv2_0/controllers/bookmark_provider.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
 import 'package:jobhubv2_0/controllers/vacants_provider.dart';
 import 'package:jobhubv2_0/controllers/zoom_provider.dart';
+import 'package:jobhubv2_0/models/request/applied/applied.dart';
 import 'package:jobhubv2_0/models/response/bookmarks/book_res.dart';
 import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
 import 'package:jobhubv2_0/services/firebase_services.dart';
+import 'package:jobhubv2_0/services/helpers/applied_helper.dart';
 import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
 import 'package:jobhubv2_0/views/common/BackBtn.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
@@ -254,6 +256,17 @@ class _VacantDetailsState extends State<VacantDetails> {
                                             createChat(vacantDetails, users,
                                                 chatRoomId, messageType);
 
+                                            AppliedPost model =
+                                                AppliedPost(vacant: vacant.id);
+
+                                            var newModel =
+                                                appliedPostToJson(model);
+
+                                            AppliedHelper.applyVacant(newModel);
+
+                                            zoomNotifier.currentIndex = 1;
+                                            Get.to(() => const Mainscreen());
+                                          } else {
                                             zoomNotifier.currentIndex = 1;
                                             Get.to(() => const Mainscreen());
                                           }

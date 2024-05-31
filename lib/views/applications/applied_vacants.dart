@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobhubv2_0/controllers/login_provider.dart';
+import 'package:jobhubv2_0/models/response/applied/applied.dart';
+import 'package:jobhubv2_0/services/helpers/applied_helper.dart';
+import 'package:jobhubv2_0/views/applications/widgets/applied_tile.dart';
 import 'package:jobhubv2_0/views/common/app_bar.dart';
 import 'package:jobhubv2_0/views/common/drawer/drawer_widget.dart';
 import 'package:jobhubv2_0/views/common/exports.dart';
+import 'package:jobhubv2_0/views/common/pages_loader.dart';
+import 'package:jobhubv2_0/views/common/styled_container.dart';
 import 'package:jobhubv2_0/views/screens/auth/non_user.dart';
 import 'package:provider/provider.dart';
 
-class AppliedVacants extends StatefulWidget {
+class AppliedVacants extends StatelessWidget {
   const AppliedVacants({super.key});
 
-  @override
-  State<AppliedVacants> createState() => _AppliedVacantsState();
-}
-
-class _AppliedVacantsState extends State<AppliedVacants> {
   @override
   Widget build(BuildContext context) {
     var loginNotifier = Provider.of<LoginNotifier>(context);
@@ -22,6 +22,7 @@ class _AppliedVacantsState extends State<AppliedVacants> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.h),
           child: CustomAppBar(
+            text: 'Postulaciones',
             child: Padding(
               padding: EdgeInsets.all(12.0.h),
               child: DrawerWidget(color: Color(kDark.value)),
@@ -30,11 +31,58 @@ class _AppliedVacantsState extends State<AppliedVacants> {
         ),
         body: loginNotifier.loggedIn == false
             ? const NonUser()
-            : Center(
-                child: ReusableText(
-                  text: "Postulaciones",
-                  style: appStyle(30, Color(kDark.value), FontWeight.bold),
-                ),
+            : Stack(
+                children: [
+                  Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20.w),
+                                topLeft: Radius.circular(20.w)),
+                            color: Color(kLight.value)),
+                        child: buildStyleContainer(
+                            context,
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w),
+                              child: FutureBuilder<List<Applied>>(
+                                future: AppliedHelper.getApplied(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const PageLoader();
+                                  } else if (snapshot.hasError) {
+                                    return Text("Error: ${snapshot.error}");
+                                  } else if (!snapshot.hasData ||
+                                      snapshot.data!.isEmpty) {
+                                    return Center(
+                                      child: ReusableText(
+                                          text: 'Lista de postulaciones vacía.',
+                                          style: appStyle(
+                                              16,
+                                              Color(kDarkGris.value),
+                                              FontWeight.normal)),
+                                    );
+                                  } else {
+                                    var vacants = snapshot.data;
+                                    return ListView.builder(
+                                      itemCount: vacants!.length,
+                                      scrollDirection: Axis.vertical,
+                                      itemBuilder: (context, index) {
+                                        final vacant = vacants[index].vacant;
+                                        return AppliedTile(vacant: vacant);
+                                      },
+                                    );
+                                  }
+                                },
+                              ),
+                            )),
+                      ))
+                ],
               ));
   }
 }
