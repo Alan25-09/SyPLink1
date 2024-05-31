@@ -72,7 +72,7 @@ class AgentsHelper {
       var agents = vacantsResponseFromJson(response.body);
       return agents;
     } else {
-      throw Exception('Failed to get bookmark');
+      throw Exception('No se pudo obtener el listado de agentes');
     }
   }
 }

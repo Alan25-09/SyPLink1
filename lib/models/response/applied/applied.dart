@@ -1,84 +1,75 @@
 import 'dart:convert';
 
-List<Applied> appliedFromJson(String str) => List<Applied>.from(json.decode(str).map((x) => Applied.fromJson(x)));
+List<Applied> appliedFromJson(String str) =>
+    List<Applied>.from(json.decode(str).map((x) => Applied.fromJson(x)));
 
-String appliedToJson(List<Applied> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String appliedToJson(List<Applied> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Applied {
-    final String id;
-    final String user;
-    final Job job;
+  final String id;
+  final String user;
+  final Vacant vacant;
 
-    Applied({
-        required this.id,
-        required this.user,
-        required this.job,
-    });
+  Applied({
+    required this.id,
+    required this.user,
+    required this.vacant,
+  });
 
-    factory Applied.fromJson(Map<String, dynamic> json) => Applied(
+  factory Applied.fromJson(Map<String, dynamic> json) => Applied(
         id: json["_id"],
         user: json["user"],
-        job: Job.fromJson(json["job"]),
-    );
+        vacant: Vacant.fromJson(json["vacant"]),
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "_id": id,
         "user": user,
-        "job": job.toJson(),
-    };
+        "vacant": vacant.toJson(),
+      };
 }
 
-class Job {
-    final String id;
-    final String title;
-    final String location;
-    final String company;
-    final bool hiring;
-    final String salary;
-    final String period;
-    final String contract;
-    final String imageUrl;
-    final String agentId;
-    final String agentName;
+class Vacant {
+  final String id;
+  final String title;
+  final String area;
+  final String responsibleId;
+  final String responsibleName;
+  final String schedule;
+  final bool status;
+  final String imageUrl;
 
-    Job({
-        required this.id,
-        required this.title,
-        required this.location,
-        required this.company,
-        required this.hiring,
-        required this.salary,
-        required this.period,
-        required this.contract,
-        required this.imageUrl,
-        required this.agentId,
-        required this.agentName,
-    });
+  Vacant({
+    required this.id,
+    required this.title,
+    required this.area,
+    required this.responsibleId,
+    required this.responsibleName,
+    required this.schedule,
+    required this.status,
+    required this.imageUrl,
+  });
 
-    factory Job.fromJson(Map<String, dynamic> json) => Job(
+  factory Vacant.fromJson(Map<String, dynamic> json) => Vacant(
         id: json["_id"],
         title: json["title"],
-        location: json["location"],
-        company: json["company"],
-        hiring: json["hiring"],
-        salary: json["salary"],
-        agentName: json["agentName"],
-        period: json["period"],
-        contract: json["contract"],
+        area: json["area"],
+        responsibleId: json["responsibleId"],
+        responsibleName: json["responsibleName"],
+        schedule: json["schedule"],
+        status: json["status"],
         imageUrl: json["imageUrl"],
-        agentId: json["agentId"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "_id": id,
         "title": title,
-        "location": location,
-        "company": company,
-        "hiring": hiring,
-        "salary": salary,
-        "period": period,
-        "contract": contract,
+        "area": area,
+        "responsibleId": responsibleId,
+        "responsibleName": responsibleName,
+        "schedule": schedule,
+        "status": status,
         "imageUrl": imageUrl,
-        "agentId": agentId,
-    };
+      };
 }

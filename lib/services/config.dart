@@ -12,5 +12,6 @@ class Config {
   static const String bookmarkUrl = "/api/bookmarks";
   static const String singleBookmarkUrl = "/api/bookmarks/bookmark/";
   static const String chatsUrl = "/api/chats";
+  static const String appliedUrl = "/api/applied";
   static const String messagingUrl = "/api/messages";
 }
