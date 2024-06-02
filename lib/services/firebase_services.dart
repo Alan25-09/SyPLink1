@@ -33,6 +33,7 @@ class FirebaseServices {
       'messageType': message['messageType'],
       'sender': message['sender'],
       'profile': message['profile'],
+      'id': message['id'],
       'timestamp': Timestamp.now(),
       'lastChat': message['message'],
       'lastChatTime': message['time'],
