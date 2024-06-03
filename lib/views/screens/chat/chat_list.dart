@@ -42,7 +42,7 @@ class _ChatListState extends State<ChatList> with TickerProviderStateMixin {
   FirebaseServices services = FirebaseServices();
   final Stream<QuerySnapshot> _chat = FirebaseFirestore.instance
       .collection('chats')
-      .where('users', arrayContains: userUid)
+      //.where('users', arrayContains: userUid)
       .snapshots();
 
   @override

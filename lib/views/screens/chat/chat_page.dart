@@ -260,7 +260,7 @@ class _ChatPageState extends State<ChatPage> {
                                                     message['messageType'],
                                                     message['message'],
                                                     message['profile'])
-                                                : ChatLeftItem(
+                                                : chatLeftItem(
                                                     message['messageType'],
                                                     message['message'],
                                                     message['profile'])
