@@ -140,16 +140,11 @@ class _ChatPageState extends State<ChatPage> {
         ],
       ),
       body: SafeArea(
-          child: Stack(
-        children: [
-          Positioned(
-            top: 0.h,
-            right: 0,
-            left: 0,
-            child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
               padding: EdgeInsets.only(left: 5.w, right: 20.w, top: 10.w),
-              width: width,
-              height: 100.h,
               decoration: BoxDecoration(
                 color: Color(kVerde.value),
                 borderRadius: BorderRadius.only(
@@ -157,136 +152,145 @@ class _ChatPageState extends State<ChatPage> {
                   topRight: Radius.circular(20.w),
                 ),
               ),
-              child: Column(
-                children: [
-                  Consumer<AgentNotifier>(
-                    builder: (context, agentNotifier, child) {
-                      var vacantDetails = agentNotifier.chat['vacant'];
-                      return Padding(
-                        padding: EdgeInsets.all(8.w),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Consumer<AgentNotifier>(
+                builder: (context, agentNotifier, child) {
+                  var vacantDetails = agentNotifier.chat['vacant'];
+                  return Padding(
+                    padding: EdgeInsets.all(8.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
                           children: [
-                            Row(
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ReusableText(
-                                        text: vacantDetails['title'],
-                                        style: appStyle(12, Color(kLight.value),
-                                            FontWeight.w600)),
-                                  ],
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 20.w),
-                                  child: Container(
-                                    height: 60.w,
-                                    width: 1.w,
-                                    color: Color(kLight.value),
+                                ReusableText(
+                                  text: vacantDetails['title'],
+                                  style: appStyle(
+                                    12,
+                                    Color(kLight.value),
+                                    FontWeight.w600,
                                   ),
                                 ),
                               ],
                             ),
-                            const WidthSpacer(width: 20),
-                            CircularPicture(
-                                image: vacantDetails['imageUrl'], w: 50, h: 50)
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w),
+                              child: Container(
+                                height: 60.w,
+                                width: 1.w,
+                                color: Color(kLight.value),
+                              ),
+                            ),
                           ],
                         ),
-                      );
-                    },
-                  )
-                ],
+                        const WidthSpacer(width: 20),
+                        CircularPicture(
+                          image: vacantDetails['imageUrl'],
+                          w: 50,
+                          h: 50,
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
-          ),
-          Positioned(
-              top: 85.w,
-              left: 0,
-              right: 0,
+            Expanded(
               child: Container(
-                width: width,
-                height: height * 0.75,
                 decoration: BoxDecoration(
-                    color: Color(kGris.value),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.w),
-                      topRight: Radius.circular(20.w),
-                    )),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 6.w),
-                      child: StreamBuilder(
-                        stream: _chats,
-                        builder: (BuildContext context, snapshot) {
-                          if (snapshot.hasError) {
-                            return Text('Error ${snapshot.error}');
-                          } else if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const SizedBox.shrink();
-                          } else if (!snapshot.hasData ||
-                              snapshot.data!.docs.isEmpty) {
-                            return const SizedBox.shrink();
-                          }
-                          int msgCount = snapshot.data!.docs.length;
-                          return Column(
-                            children: [
-                              Container(
-                                height: height * .66,
-                                padding: EdgeInsets.all(8.w),
-                                child: ScrollablePositionedList.builder(
-                                    itemCount: msgCount,
-                                    initialScrollIndex: msgCount,
-                                    itemScrollController: itemController,
-                                    itemBuilder: (context, index) {
-                                      var message = snapshot.data!.docs[index];
-
-                                      Timestamp lastChatTime = message['time'];
-                                      DateTime chatTime = lastChatTime.toDate();
-
-                                      return Padding(
-                                        padding: EdgeInsets.all(8.w),
-                                        child: Column(
-                                          children: [
-                                            Text(duTimeLineFormat(chatTime),
-                                                style: appStyle(10, Colors.grey,
-                                                    FontWeight.normal)),
-                                            message['sender'] == userUid
-                                                ? chatRightItem(
-                                                    message['messageType'],
-                                                    message['message'],
-                                                    message['profile'])
-                                                : chatLeftItem(
-                                                    message['messageType'],
-                                                    message['message'],
-                                                    message['profile'])
-                                          ],
-                                        ),
-                                      );
-                                    }),
-                              )
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                    Positioned(
-                        bottom: 0.h,
-                        child: MessagingField(
-                            sendText: () {
-                              sendMessage();
-                            },
-                            messageController: messageController,
-                            messageFocusNode: messageFocusNode))
-                  ],
+                  color: Color(kGris.value),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.w),
+                    topRight: Radius.circular(20.w),
+                  ),
                 ),
-              ))
-        ],
-      )),
+                child: StreamBuilder(
+                  stream: _chats,
+                  builder: (BuildContext context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Error ${snapshot.error}');
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return const SizedBox.shrink();
+                    } else if (!snapshot.hasData ||
+                        snapshot.data!.docs.isEmpty) {
+                      return const SizedBox.shrink();
+                    }
+                    int msgCount = snapshot.data!.docs.length;
+                    return SingleChildScrollView(
+                      reverse: true,
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom > 0
+                            ? 16.0
+                            : 0.0,
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height *
+                                0.6, // Ajusta la altura según tu diseño
+                            child: ScrollablePositionedList.builder(
+                              itemCount: msgCount,
+                              initialScrollIndex:
+                                  msgCount - 1, // Scrollear hasta el final
+                              itemScrollController: itemController,
+                              itemBuilder: (context, index) {
+                                var message = snapshot.data!.docs[index];
+
+                                Timestamp lastChatTime = message['time'];
+                                DateTime chatTime = lastChatTime.toDate();
+
+                                return Padding(
+                                  padding: EdgeInsets.all(8.w),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        duTimeLineFormat(chatTime),
+                                        style: appStyle(
+                                            10, Colors.grey, FontWeight.normal),
+                                      ),
+                                      message['sender'] == userUid
+                                          ? chatRightItem(
+                                              message['messageType'],
+                                              message['message'],
+                                              message['profile'],
+                                            )
+                                          : chatLeftItem(
+                                              message['messageType'],
+                                              message['message'],
+                                              message['profile'],
+                                            ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                  maxHeight:
+                      200), // Establece una altura máxima para el MessagingField
+              child: MessagingField(
+                sendText: () {
+                  sendMessage();
+                },
+                messageController: messageController,
+                messageFocusNode: messageFocusNode,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

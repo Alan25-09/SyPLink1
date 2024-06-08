@@ -1,0 +1,1 @@
+ D:\\Documentos\\pruebas\ responsividad\\SyPLink1\\.dart_tool\\flutter_build\\739f25dcf8f94525e850488ad590b32b\\native_assets.yaml: 
