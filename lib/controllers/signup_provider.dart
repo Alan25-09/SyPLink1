@@ -41,12 +41,17 @@ class SignUpNotifier extends ChangeNotifier {
     AuthHelper.signup(model).then((response) {
       if (response == true) {
         loader = false;
+        Get.snackbar('Registro exitoso', 'Ahora puedes iniciar sesión.',
+            colorText: Color(kLight.value),
+            backgroundColor: Color(kVerde.value),
+            icon: const Icon(Icons.add_alert));
         Get.offAll(() => const LoginPage());
       } else {
         loader = false;
-        Get.snackbar('Error al registrarse', 'Revisa la información ingresada',
+        Get.snackbar('Error al registrarse',
+            'El correo electrónico ya se encuentra asociado a una cuenta.',
             colorText: Color(kLight.value),
-            backgroundColor: Color(kVerde.value),
+            backgroundColor: Color(kOrange.value),
             icon: const Icon(Icons.add_alert));
       }
     });
