@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
+import 'package:syplink/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobhubv2_0/models/response/bookmarks/all_bookmarks.dart';
-import 'package:jobhubv2_0/services/helpers/book_helper.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
+import 'package:syplink/models/response/bookmarks/all_bookmarks.dart';
+import 'package:syplink/services/helpers/book_helper.dart';
 
 class BookNotifier extends ChangeNotifier {
   late Future<List<AllBookMarks>> bookmarks;

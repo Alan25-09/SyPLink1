@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
+import 'package:syplink/views/common/exports.dart';
 
 class buildtextfield extends StatelessWidget {
   const buildtextfield({

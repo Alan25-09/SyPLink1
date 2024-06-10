@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/views/common/app_style.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/views/common/app_style.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.controller, required this.hintText, required this.keyboardType, this.validator, this.suffixIcon, this.obscureText});
+  const CustomTextField(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      required this.keyboardType,
+      this.validator,
+      this.suffixIcon,
+      this.obscureText});
 
   final TextEditingController controller;
   final String hintText;
@@ -16,12 +23,11 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-      color: Color(kLightGrey.value),
-      borderRadius: const BorderRadius.all(Radius.circular(9))
-      ),
+          color: Color(kLightGrey.value),
+          borderRadius: const BorderRadius.all(Radius.circular(9))),
       child: TextFormField(
         keyboardType: keyboardType,
-        obscureText: obscureText??false,
+        obscureText: obscureText ?? false,
         decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,

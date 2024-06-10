@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
+import 'package:syplink/views/common/exports.dart';
 
 /* Clase donde se construye la página uno de la introducción */
 class PageOne extends StatelessWidget {

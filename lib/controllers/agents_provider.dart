@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jobhubv2_0/models/request/agents/agents.dart';
-import 'package:jobhubv2_0/models/response/agent/getAgent.dart';
-import 'package:jobhubv2_0/models/response/vacants/vacants_response.dart';
-import 'package:jobhubv2_0/services/helpers/agents_helper.dart';
+import 'package:syplink/models/request/agents/agents.dart';
+import 'package:syplink/models/response/agent/getAgent.dart';
+import 'package:syplink/models/response/vacants/vacants_response.dart';
+import 'package:syplink/services/helpers/agents_helper.dart';
 
 class AgentNotifier extends ChangeNotifier {
   late List<Agents> allAgents;

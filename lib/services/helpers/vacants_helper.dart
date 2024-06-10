@@ -1,8 +1,7 @@
 import 'package:http/http.dart' as https;
-import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
-import 'package:jobhubv2_0/models/response/vacants/vacants_response.dart';
-import 'package:jobhubv2_0/services/config.dart';
-import 'package:jobhubv2_0/views/screens/vacants/update_vacant.dart';
+import 'package:syplink/models/response/vacants/get_vacant.dart';
+import 'package:syplink/models/response/vacants/vacants_response.dart';
+import 'package:syplink/services/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class VacantsHelper {

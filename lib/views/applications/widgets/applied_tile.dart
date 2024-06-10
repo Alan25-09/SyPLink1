@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/models/response/applied/applied.dart';
-import 'package:jobhubv2_0/views/common/app_style.dart';
-import 'package:jobhubv2_0/views/common/custom_outline_btn.dart';
-import 'package:jobhubv2_0/views/common/reusable_text.dart';
-import 'package:jobhubv2_0/views/screens/vacants/vacant_details_page.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/models/response/applied/applied.dart';
+import 'package:syplink/views/common/app_style.dart';
+import 'package:syplink/views/common/custom_outline_btn.dart';
+import 'package:syplink/views/common/reusable_text.dart';
+import 'package:syplink/views/screens/vacants/vacant_details_page.dart';
 
 class AppliedTile extends StatelessWidget {
   const AppliedTile({super.key, required this.vacant});

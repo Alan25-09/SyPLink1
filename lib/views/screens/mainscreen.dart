@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:jobhubv2_0/controllers/zoom_provider.dart';
-import 'package:jobhubv2_0/views/applications/applied_vacants.dart';
-import 'package:jobhubv2_0/views/common/drawer/drawerScreen.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/reusable_text.dart';
-import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
-import 'package:jobhubv2_0/views/screens/bookmarks/bookmarks.dart';
-import 'package:jobhubv2_0/views/screens/chat/chat_list.dart';
-import 'package:jobhubv2_0/views/screens/home/homepage.dart';
+import 'package:syplink/controllers/zoom_provider.dart';
+import 'package:syplink/views/applications/applied_vacants.dart';
+import 'package:syplink/views/common/drawer/drawerScreen.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/screens/auth/profile_page.dart';
+import 'package:syplink/views/screens/bookmarks/bookmarks.dart';
+import 'package:syplink/views/screens/chat/chat_list.dart';
+import 'package:syplink/views/screens/home/homepage.dart';
 import 'package:provider/provider.dart';
 
 class Mainscreen extends StatefulWidget {

@@ -1,15 +1,17 @@
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/views/common/app_style.dart';
+import 'package:syplink/views/common/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/controllers/login_provider.dart';
-import 'package:jobhubv2_0/models/response/applied/applied.dart';
-import 'package:jobhubv2_0/services/helpers/applied_helper.dart';
-import 'package:jobhubv2_0/views/applications/widgets/applied_tile.dart';
-import 'package:jobhubv2_0/views/common/app_bar.dart';
-import 'package:jobhubv2_0/views/common/drawer/drawer_widget.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/pages_loader.dart';
-import 'package:jobhubv2_0/views/common/styled_container.dart';
-import 'package:jobhubv2_0/views/screens/auth/non_user.dart';
+import 'package:syplink/controllers/login_provider.dart';
+import 'package:syplink/models/response/applied/applied.dart';
+import 'package:syplink/services/helpers/applied_helper.dart';
+import 'package:syplink/views/applications/widgets/applied_tile.dart';
+import 'package:syplink/views/common/app_bar.dart';
+import 'package:syplink/views/common/drawer/drawer_widget.dart';
+import 'package:syplink/views/common/pages_loader.dart';
+import 'package:syplink/views/common/styled_container.dart';
+import 'package:syplink/views/screens/auth/non_user.dart';
 import 'package:provider/provider.dart';
 
 class AppliedVacants extends StatelessWidget {

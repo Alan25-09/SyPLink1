@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobhubv2_0/views/common/custom_outline_btn.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/height_spacer.dart';
-import 'package:jobhubv2_0/views/common/styled_container.dart';
-import 'package:jobhubv2_0/views/screens/auth/login.dart';
+import 'package:syplink/views/common/custom_outline_btn.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/common/height_spacer.dart';
+import 'package:syplink/views/common/styled_container.dart';
+import 'package:syplink/views/screens/auth/login.dart';
 
 class NonUser extends StatelessWidget {
   const NonUser({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/controllers/vacants_provider.dart';
-import 'package:jobhubv2_0/models/response/vacants/vacants_response.dart';
-import 'package:jobhubv2_0/views/screens/vacants/widgets/VacantsVerticalTile.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/controllers/vacants_provider.dart';
+import 'package:syplink/models/response/vacants/vacants_response.dart';
+import 'package:syplink/views/screens/vacants/widgets/VacantsVerticalTile.dart';
 import 'package:provider/provider.dart';
 
 class RecentVacants extends StatelessWidget {

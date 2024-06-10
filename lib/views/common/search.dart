@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/width_spacer.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/common/width_spacer.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key, this.onTap});

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:get/get.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/controllers/agents_provider.dart';
-import 'package:jobhubv2_0/views/common/app_style.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/controllers/agents_provider.dart';
+import 'package:syplink/views/common/app_style.dart';
 import 'package:provider/provider.dart';
 
 class MessagingField extends StatelessWidget {

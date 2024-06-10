@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as https;
-import 'package:jobhubv2_0/models/response/applied/applied.dart';
-import 'package:jobhubv2_0/services/config.dart';
+import 'package:syplink/models/response/applied/applied.dart';
+import 'package:syplink/services/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppliedHelper {
