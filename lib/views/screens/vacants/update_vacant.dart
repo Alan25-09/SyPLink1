@@ -78,7 +78,7 @@ class _UpdateVacantState extends State<UpdateVacant> {
                 )
               ],
               color: Color(kVerde.value),
-              text: "Actualiza Vacantes",
+              text: "Editar vacante",
               child: const BackBtn())),
       body: Stack(
         children: [
@@ -309,7 +309,7 @@ class _UpdateVacantState extends State<UpdateVacant> {
                                     rq5.text.isEmpty) {
                                   Get.snackbar(
                                     'Error',
-                                    'Todos los campos obligatorios deben ser llenados.',
+                                    'Todos los campos son obligatorios y deben ser llenados.',
                                     colorText: Color(kLight.value),
                                     backgroundColor: Colors.red,
                                     icon: const Icon(Icons.error_outline),

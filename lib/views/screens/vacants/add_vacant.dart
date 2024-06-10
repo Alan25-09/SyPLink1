@@ -297,7 +297,7 @@ class _AddVacantState extends State<AddVacant> {
                               rq5.text.isEmpty) {
                             Get.snackbar(
                               'Error',
-                              'Todos los campos obligatorios deben ser llenados.',
+                              'Todos los campos son obligatorios y deben ser llenados.',
                               colorText: Color(kLight.value),
                               backgroundColor: Colors.red,
                               icon: const Icon(Icons.error_outline),
