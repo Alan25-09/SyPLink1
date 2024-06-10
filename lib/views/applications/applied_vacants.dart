@@ -24,7 +24,7 @@ class AppliedVacants extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.h),
           child: CustomAppBar(
-            text: 'Postulaciones',
+            text: !loginNotifier.loggedIn ? "" : 'Postulaciones',
             child: Padding(
               padding: EdgeInsets.all(12.0.h),
               child: DrawerWidget(color: Color(kDark.value)),

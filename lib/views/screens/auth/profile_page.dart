@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.h),
         child: CustomAppBar(
-          text: 'Perfil',
+          text: !loginNotifier.loggedIn ? "" : 'Perfil',
           child: Padding(
             padding: EdgeInsets.all(12.0.h),
             child: widget.drawer == false
