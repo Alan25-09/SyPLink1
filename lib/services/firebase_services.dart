@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:syplink/constants/app_constants.dart';
 
 class FirebaseServices {
   CollectionReference typing = FirebaseFirestore.instance.collection('typing');

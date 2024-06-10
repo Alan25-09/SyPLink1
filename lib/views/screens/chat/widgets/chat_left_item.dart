@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/views/common/app_style.dart';
-import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
+import 'package:syplink/views/common/app_style.dart';
+import 'package:syplink/views/screens/auth/profile_page.dart';
 
 Widget chatLeftItem(String type, String message, String profile) {
   return Align(

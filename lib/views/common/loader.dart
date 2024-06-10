@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/width_spacer.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/common/width_spacer.dart';
 
 class NoSearchResults extends StatelessWidget {
   const NoSearchResults({
@@ -19,10 +18,9 @@ class NoSearchResults extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
             Image.asset("assets/images/optimized_search.png"),
-           const WidthSpacer(width: 20),
-           ReusableText(
+            const WidthSpacer(width: 20),
+            ReusableText(
                 text: text,
                 style: appStyle(18, Color(kDark.value), FontWeight.w500))
           ],

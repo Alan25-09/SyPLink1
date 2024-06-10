@@ -4,7 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:syplink/constants/app_constants.dart';
 import 'package:uuid/uuid.dart';
 
 class ImageUpoader extends ChangeNotifier {
@@ -67,7 +67,7 @@ class ImageUpoader extends ChangeNotifier {
     await ref.putFile(image);
 
     imageUrl = (await ref.getDownloadURL());
-   
+
     return imageUrl;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
+import 'package:syplink/constants/app_constants.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key, this.onTap});

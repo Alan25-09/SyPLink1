@@ -1,30 +1,25 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/controllers/agents_provider.dart';
-import 'package:jobhubv2_0/controllers/login_provider.dart';
-import 'package:jobhubv2_0/models/request/agents/agents.dart';
-import 'package:jobhubv2_0/services/firebase_services.dart';
-import 'package:jobhubv2_0/utils/date.dart';
-import 'package:jobhubv2_0/views/common/app_style.dart';
-import 'package:jobhubv2_0/views/common/height_spacer.dart';
-import 'package:jobhubv2_0/views/common/loader.dart';
-import 'package:jobhubv2_0/views/common/pages_loader.dart';
-import 'package:jobhubv2_0/views/common/reusable_text.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/controllers/agents_provider.dart';
+import 'package:syplink/controllers/login_provider.dart';
+import 'package:syplink/models/request/agents/agents.dart';
+import 'package:syplink/services/firebase_services.dart';
+import 'package:syplink/utils/date.dart';
+import 'package:syplink/views/common/app_style.dart';
+import 'package:syplink/views/common/height_spacer.dart';
+import 'package:syplink/views/common/loader.dart';
+import 'package:syplink/views/common/pages_loader.dart';
+import 'package:syplink/views/common/reusable_text.dart';
 import 'package:get/get.dart';
-import 'package:jobhubv2_0/views/common/app_bar.dart';
-import 'package:jobhubv2_0/views/common/drawer/drawer_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:jobhubv2_0/views/common/width_spacer.dart';
-import 'package:jobhubv2_0/views/screens/agent/agent_details.dart';
-import 'package:jobhubv2_0/views/screens/auth/non_user.dart';
-import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
-import 'package:jobhubv2_0/views/screens/chat/chat_page.dart';
+import 'package:syplink/views/common/drawer/drawer_widget.dart';
+import 'package:syplink/views/common/width_spacer.dart';
+import 'package:syplink/views/screens/agent/agent_details.dart';
+import 'package:syplink/views/screens/auth/non_user.dart';
+import 'package:syplink/views/screens/auth/profile_page.dart';
+import 'package:syplink/views/screens/chat/chat_page.dart';
 import 'package:provider/provider.dart';
 
 class ChatList extends StatefulWidget {

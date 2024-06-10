@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/models/response/vacants/vacants_response.dart';
-import 'package:jobhubv2_0/services/helpers/vacants_helper.dart';
-import 'package:jobhubv2_0/views/common/custom_textfield.dart';
-import 'package:jobhubv2_0/views/common/loader.dart';
-import 'package:jobhubv2_0/views/screens/vacants/widgets/VacantsVerticalTile.dart';
-import 'package:jobhubv2_0/views/search/widget/custom_field.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/models/response/vacants/vacants_response.dart';
+import 'package:syplink/services/helpers/vacants_helper.dart';
+import 'package:syplink/views/common/loader.dart';
+import 'package:syplink/views/screens/vacants/widgets/VacantsVerticalTile.dart';
+import 'package:syplink/views/search/widget/custom_field.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

@@ -1,3 +1,3 @@
-export 'package:jobhubv2_0/constants/app_constants.dart';
-export 'package:jobhubv2_0/views/common/app_style.dart';
-export 'package:jobhubv2_0/views/common/reusable_text.dart';
+export 'package:syplink/constants/app_constants.dart';
+export 'package:syplink/views/common/app_style.dart';
+export 'package:syplink/views/common/reusable_text.dart';

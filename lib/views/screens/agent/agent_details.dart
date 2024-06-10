@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/controllers/agents_provider.dart';
-import 'package:jobhubv2_0/models/response/agent/getAgent.dart';
-import 'package:jobhubv2_0/services/helpers/agents_helper.dart';
-import 'package:jobhubv2_0/views/common/BackBtn.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/height_spacer.dart';
-import 'package:jobhubv2_0/views/common/styled_container.dart';
-import 'package:jobhubv2_0/views/common/width_spacer.dart';
-import 'package:jobhubv2_0/views/screens/agent/agent_vacants.dart';
-import 'package:jobhubv2_0/views/screens/auth/profile_page.dart';
+import 'package:syplink/controllers/agents_provider.dart';
+import 'package:syplink/views/common/BackBtn.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/common/styled_container.dart';
+import 'package:syplink/views/common/width_spacer.dart';
+import 'package:syplink/views/screens/agent/agent_vacants.dart';
+import 'package:syplink/views/screens/auth/profile_page.dart';
 import 'package:provider/provider.dart';
 
 class AgentDetails extends StatelessWidget {

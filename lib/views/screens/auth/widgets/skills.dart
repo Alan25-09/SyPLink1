@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:jobhubv2_0/controllers/skills_provider.dart';
-import 'package:jobhubv2_0/controllers/zoom_provider.dart';
-import 'package:jobhubv2_0/models/request/auth/add_skills.dart';
-import 'package:jobhubv2_0/models/response/auth/skills.dart';
-import 'package:jobhubv2_0/services/helpers/auth_helper.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/common/height_spacer.dart';
-import 'package:jobhubv2_0/views/common/pages_loader.dart';
-import 'package:jobhubv2_0/views/common/width_spacer.dart';
-import 'package:jobhubv2_0/views/screens/auth/widgets/addSkills.dart';
+import 'package:syplink/controllers/skills_provider.dart';
+import 'package:syplink/controllers/zoom_provider.dart';
+import 'package:syplink/models/request/auth/add_skills.dart';
+import 'package:syplink/models/response/auth/skills.dart';
+import 'package:syplink/services/helpers/auth_helper.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/common/height_spacer.dart';
+import 'package:syplink/views/common/width_spacer.dart';
+import 'package:syplink/views/screens/auth/widgets/addSkills.dart';
 import 'package:provider/provider.dart';
 
 class SkillWidget extends StatefulWidget {

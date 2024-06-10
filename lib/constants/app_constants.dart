@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/models/response/vacants/get_vacant.dart';
+import 'package:syplink/models/response/vacants/get_vacant.dart';
 
 const kDark = Color(0xFF000000);
 const kLight = Color(0xFFFFFFFF);

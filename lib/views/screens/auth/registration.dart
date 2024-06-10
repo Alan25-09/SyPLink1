@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/controllers/signup_provider.dart';
-import 'package:jobhubv2_0/controllers/zoom_provider.dart';
-import 'package:jobhubv2_0/models/request/auth/signup_model.dart';
-import 'package:jobhubv2_0/views/common/app_bar.dart';
-import 'package:jobhubv2_0/views/common/app_style.dart';
-import 'package:jobhubv2_0/views/common/custom_btn.dart';
-import 'package:jobhubv2_0/views/common/custom_textfield.dart';
-import 'package:jobhubv2_0/views/common/height_spacer.dart';
-import 'package:jobhubv2_0/views/common/pages_loader.dart';
-import 'package:jobhubv2_0/views/common/reusable_text.dart';
-import 'package:jobhubv2_0/views/common/styled_container.dart';
-import 'package:jobhubv2_0/views/screens/auth/login.dart';
+import 'package:syplink/constants/app_constants.dart';
+import 'package:syplink/controllers/signup_provider.dart';
+import 'package:syplink/controllers/zoom_provider.dart';
+import 'package:syplink/models/request/auth/signup_model.dart';
+import 'package:syplink/views/common/app_bar.dart';
+import 'package:syplink/views/common/app_style.dart';
+import 'package:syplink/views/common/custom_btn.dart';
+import 'package:syplink/views/common/custom_textfield.dart';
+import 'package:syplink/views/common/height_spacer.dart';
+import 'package:syplink/views/common/pages_loader.dart';
+import 'package:syplink/views/common/reusable_text.dart';
+import 'package:syplink/views/common/styled_container.dart';
+import 'package:syplink/views/screens/auth/login.dart';
 import 'package:provider/provider.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -71,7 +71,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           const HeightSpacer(size: 50),
                           Center(
                             child: ReusableText(
-                              text: "¡Bienvenid@ a SyPLink!",
+                              text: "¡Bienvenid@ a syplink!",
                               style: appStyle(
                                 25,
                                 Color(kDark.value),

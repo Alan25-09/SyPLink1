@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobhubv2_0/constants/app_constants.dart';
-import 'package:jobhubv2_0/controllers/onboarding_provider.dart';
-import 'package:jobhubv2_0/views/common/exports.dart';
-import 'package:jobhubv2_0/views/screens/onboarding/widget/PageOne.dart';
-import 'package:jobhubv2_0/views/screens/onboarding/widget/PageThree.dart';
-import 'package:jobhubv2_0/views/screens/onboarding/widget/PageTwo.dart';
+import 'package:syplink/controllers/onboarding_provider.dart';
+import 'package:syplink/views/common/exports.dart';
+import 'package:syplink/views/screens/onboarding/widget/PageOne.dart';
+import 'package:syplink/views/screens/onboarding/widget/PageThree.dart';
+import 'package:syplink/views/screens/onboarding/widget/PageTwo.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

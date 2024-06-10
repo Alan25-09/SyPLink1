@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\Angela\Documents\Flutter Projects\SyPLink1\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->C:\Users\Angela\Documents\Flutter Projects\SyPLink1\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->C:\Users\Angela\Documents\Flutter Projects\syplink1\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\Angela\Documents\Flutter Projects\syplink1\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 17    <!-- <uses-sdk android:minSdkVersion="14" /> -->
 18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -73,31 +73,31 @@
 63            android:value="2" />
 64
 65        <service
-65-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+65-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
 66            android:name="com.google.firebase.components.ComponentDiscoveryService"
-66-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+66-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
 67            android:directBootAware="true"
 67-->[com.google.firebase:firebase-common:20.4.3] C:\Users\Angela\.gradle\caches\transforms-3\961b336bed9fd538d1e83b305a1343e2\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:32:13-43
 68            android:exported="false" >
 68-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\Angela\.gradle\caches\transforms-3\bc295069c05bea631242043a7c474266\transformed\jetified-firebase-firestore-24.11.0\AndroidManifest.xml:16:13-37
 69            <meta-data
-69-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+69-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 70                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-70-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
+70-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
 71                android:value="com.google.firebase.components.ComponentRegistrar" />
-71-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+71-->[:firebase_storage] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 72            <meta-data
-72-->[:cloud_firestore] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+72-->[:cloud_firestore] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 73                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-73-->[:cloud_firestore] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
+73-->[:cloud_firestore] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
 74                android:value="com.google.firebase.components.ComponentRegistrar" />
-74-->[:cloud_firestore] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+74-->[:cloud_firestore] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 75            <meta-data
-75-->[:firebase_core] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+75-->[:firebase_core] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
 76                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-76-->[:firebase_core] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+76-->[:firebase_core] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
 77                android:value="com.google.firebase.components.ComponentRegistrar" />
-77-->[:firebase_core] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+77-->[:firebase_core] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
 78            <meta-data
 78-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\Angela\.gradle\caches\transforms-3\bc295069c05bea631242043a7c474266\transformed\jetified-firebase-firestore-24.11.0\AndroidManifest.xml:17:13-19:85
 79                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
@@ -149,21 +149,21 @@
 102        </service>
 103
 104        <provider
-104-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+104-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
 105            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-105-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+105-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
 106            android:authorities="com.example.jobhubv2_0.flutter.image_provider"
-106-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+106-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
 107            android:exported="false"
-107-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+107-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 108            android:grantUriPermissions="true" >
-108-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+108-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
 109            <meta-data
-109-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+109-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
 110                android:name="android.support.FILE_PROVIDER_PATHS"
-110-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+110-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
 111                android:resource="@xml/flutter_image_picker_file_paths" />
-111-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\SyPLink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+111-->[:image_picker_android] C:\Users\Angela\Documents\Flutter Projects\syplink1\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
 112        </provider>
 113        <provider
 113-->[com.google.firebase:firebase-common:20.4.3] C:\Users\Angela\.gradle\caches\transforms-3\961b336bed9fd538d1e83b305a1343e2\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:23:9-28:39
