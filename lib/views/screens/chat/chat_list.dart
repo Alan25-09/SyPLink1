@@ -21,8 +21,6 @@ import 'package:syplink/views/screens/auth/non_user.dart';
 import 'package:syplink/views/screens/auth/profile_page.dart';
 import 'package:syplink/views/screens/chat/chat_page.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ChatList extends StatefulWidget {
   const ChatList({super.key});
