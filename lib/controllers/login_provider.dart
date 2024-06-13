@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginNotifier extends ChangeNotifier {
   bool _obscureText = true;
+  String userUid = '';
 
   bool get obscureText => _obscureText;
 
@@ -68,6 +69,12 @@ class LoginNotifier extends ChangeNotifier {
     username = prefs.getString('username') ?? '';
     userUid = prefs.getString('uid') ?? '';
     profile = prefs.getString('profile') ?? '';
+  }
+
+  getUid() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    userUid = prefs.getString('uid') ?? '';
+    return userUid;
   }
 
   logout() async {

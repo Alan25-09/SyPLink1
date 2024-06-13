@@ -21,6 +21,8 @@ import 'package:syplink/views/screens/auth/non_user.dart';
 import 'package:syplink/views/screens/auth/profile_page.dart';
 import 'package:syplink/views/screens/chat/chat_page.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ChatList extends StatefulWidget {
   const ChatList({super.key});
@@ -33,6 +35,24 @@ class _ChatListState extends State<ChatList> with TickerProviderStateMixin {
   late TabController tabController = TabController(length: 3, vsync: this);
   String imageUrl =
       "https://img.freepik.com/vector-premium/perfil-avatar-hombre-icono-redondo_24640-14044.jpg";
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // Llama a getUid() al iniciar el estado
+  //   Provider.of<LoginNotifier>(context, listen: false).getUid();
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    // Llama a getUid() al iniciar el estado
+    Provider.of<LoginNotifier>(context, listen: false).getUid().then((uid) {
+      setState(() {
+        userUid = uid;
+      }); // Imprime el valor de userUid en la consola
+    });
+  }
 
   FirebaseServices services = FirebaseServices();
   final Stream<QuerySnapshot> _chat = FirebaseFirestore.instance
@@ -194,13 +214,31 @@ class _ChatListState extends State<ChatList> with TickerProviderStateMixin {
                                   text: 'Lista de chats vacía');
                             } else {
                               final chatList = snapshot.data!.docs;
+
+                              // Filtrar la lista de chats para incluir solo aquellos donde el userUid está en la lista de IDs.
+                              final filteredChatList =
+                                  chatList.where((chatDoc) {
+                                final chat =
+                                    chatDoc.data() as Map<String, dynamic>;
+                                String sender = chat['sender'];
+                                String idList = chat[
+                                    'chatRoomId']; // Asumiendo que 'id' es una lista
+
+                                List<String> users = chat['users'];
+
+                                // Verificar si el userUid está en el campo 'sender' o en la lista 'id'.
+                                return sender == userUid ||
+                                    idList.contains(userUid) ||
+                                    users.contains(userUid);
+                              }).toList();
+
                               return ListView.builder(
-                                  itemCount: chatList.length,
+                                  itemCount: filteredChatList.length,
                                   shrinkWrap: true,
                                   padding:
                                       EdgeInsets.only(left: 10.w, top: 10.w),
                                   itemBuilder: (context, index) {
-                                    final chat = chatList[index].data()
+                                    final chat = filteredChatList[index].data()
                                         as Map<String, dynamic>;
                                     Timestamp lastChatTime =
                                         chat['lastChatTime'];
@@ -213,18 +251,19 @@ class _ChatListState extends State<ChatList> with TickerProviderStateMixin {
                                             if (chat['sender'] != userUid) {
                                               services.updateCount(
                                                   chat['chatRoomId']);
-                                            } else {}
+                                            }
                                             agentNotifier.chat = chat;
                                             Get.to(() => const ChatPage());
                                           },
                                           child: buildChatRow(
-                                              username == chat['name']
-                                                  ? chat['agentName']
-                                                  : chat['name'],
-                                              chat['lastChat'],
-                                              chat['profile'],
-                                              chat['read'] == true ? 0 : 1,
-                                              lastChatDateTime),
+                                            username == chat['name']
+                                                ? chat['agentName']
+                                                : chat['name'],
+                                            chat['lastChat'],
+                                            chat['profile'],
+                                            chat['read'] == true ? 0 : 1,
+                                            lastChatDateTime,
+                                          ),
                                         );
                                       },
                                     );
